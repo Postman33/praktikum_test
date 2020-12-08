@@ -21,4 +21,25 @@ public class ClientDAO implements IClientDAO{
         List<Client> clients = session.createQuery("from Client",Client.class).getResultList();
         return clients;
     }
+
+    @Override
+    public void SaveOrUpdate(Client client) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(client);
+    }
+
+    @Override
+    public Client getClientById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+    Client client=    session.createQuery("from Client where id = :et",Client.class).setParameter("et",id).getSingleResult();
+
+    return client;
+    }
+
+    @Override
+    public void deleteClient(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Client client=    session.createQuery("from Client where id = :et",Client.class).setParameter("et",id).getSingleResult();
+        session.delete(client);
+    }
 }

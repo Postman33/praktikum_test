@@ -1,6 +1,7 @@
 package com_test.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -18,9 +19,9 @@ public class Client {
 
 
     @Column(name = "Birthday")
-    private LocalDate Birthday;
+    private Date Birthday;
 
-    public Client(String name, LocalDate birthday) {
+    public Client(String name, Date birthday) {
         this.name = name;
         Birthday = birthday;
     }
@@ -44,11 +45,20 @@ public class Client {
         this.name = name;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return Birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         Birthday = birthday;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", Birthday=" + Birthday +
+                '}';
     }
 }

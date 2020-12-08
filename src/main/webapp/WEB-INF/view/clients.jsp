@@ -14,6 +14,7 @@
 <body>
 <div class="container">
     <h2>Clients</h2>
+    <input type="text" value="Add"/>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
     <table  class="table">
         <thead>
@@ -27,10 +28,22 @@
         <tbody>
         ${2+3}
         <c:forEach var="person" items="${clients}">
+            <c:url var="updateButton" value="/updateClient">
+                <c:param name="client_id" value="${person.id}"/>
+            </c:url>
+            <c:url var="deleteButton" value="/deleteClient">
+                <c:param name="client_id" value="${person.id}"/>
+            </c:url>
             <tr>
                 <td>${person.name}</td>
                 <td>${person.birthday}</td>
-                <th></th>
+                <th>
+
+
+                    <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
+                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
+                    <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
+                </th>
             </tr>
         </c:forEach>
         <tr class="success">
@@ -61,7 +74,10 @@
         </tr>
         </tbody>
     </table>
+    <button class="btn btn-info btn-block text-light" style="font-size: 20px;"  type="submit" onclick="window.location.href='/addClient'">Add</button>
+    <input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
 </div>
+
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

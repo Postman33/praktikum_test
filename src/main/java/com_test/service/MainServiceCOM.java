@@ -16,4 +16,22 @@ public class MainServiceCOM implements  IService{
     public List<Client> getClients() {
         return clientDAO.getAllClients();
     }
+
+    @Transactional
+    @Override
+    public void SaveClient(Client client) {
+        clientDAO.SaveOrUpdate(client);
+    }
+
+    @Transactional
+    @Override
+    public Client getClientById(int id) {
+        return clientDAO.getClientById(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteClient(int id) {
+        clientDAO.deleteClient( id );
+    }
 }
