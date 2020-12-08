@@ -26,7 +26,7 @@
 
         </thead>
         <tbody>
-        ${2+3}
+
         <c:forEach var="person" items="${clients}">
             <c:url var="updateButton" value="/updateClient">
                 <c:param name="client_id" value="${person.id}"/>
