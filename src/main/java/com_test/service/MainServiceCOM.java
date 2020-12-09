@@ -15,6 +15,11 @@ public class MainServiceCOM implements  IService{
     @Autowired
     private ITeacherDAO teacherDAO;
 
+
+
+    //                        CLIENTS
+    // ==============================================================
+    // ==============================================================
     @Transactional
     @Override
     public List<Client> getClients() {
