@@ -61,5 +61,8 @@ public class MainController {
         return "client/client_info2";
     }
 
-
+    @RequestMapping("/css")
+    public String getcss(Model model) {
+        return "main.css";
+    }
 }

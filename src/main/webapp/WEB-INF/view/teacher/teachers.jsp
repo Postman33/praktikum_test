@@ -55,7 +55,7 @@
             </tr>
         </c:forEach>
         <tr class="success">
-            <td>Success</td>
+            <td class="hrrr">Success</td>
             <td>Doe</td>
             <td>-</td>
         </tr>
@@ -87,6 +87,8 @@
 <input type="button" value="Add" onclick="window.location.href='/addTeacher'" style="margin-left: 30%"/>
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
+<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css" type="text/css">--%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">

@@ -1,6 +1,9 @@
 package com_test.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Course")
@@ -21,8 +24,27 @@ public class Course {
     @Column(name = "Price")
     private double price;
 
+
+
+    @ManyToMany( cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable( name = "CourseTeachers",
+            inverseJoinColumns = @JoinColumn(name = "teacher_id"),
+            joinColumns = @JoinColumn(name = "course_id") )
+    private List<Teacher> teachers;
+
+
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    @JoinColumn(name="Shedule_id")
+//
+//    private List<Shedule> sheduleList;
+
+
+
     public Course() {
     }
+
+
+
 
     public Course(String name, String description, double price) {
         this.name = name;
@@ -60,6 +82,14 @@ public class Course {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
     @Override
