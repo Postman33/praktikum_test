@@ -2,6 +2,7 @@ package com_test.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -18,6 +19,12 @@ public class Teacher {
 
     @Column(name = "Birthday")
     private Date Birthday;
+
+
+    @ManyToMany( cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable( name = "CourseTeachers", joinColumns = @JoinColumn(name = "teacher_id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id") )
+    private List<Course> courses;
 
     public Teacher() {
     }
@@ -50,6 +57,14 @@ public class Teacher {
 
     public void setBirthday(Date birthday) {
         Birthday = birthday;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override
