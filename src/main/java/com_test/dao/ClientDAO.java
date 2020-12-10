@@ -25,7 +25,7 @@ public class ClientDAO implements IClientDAO{
     @Override
     public void SaveOrUpdate(Client client) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(client);
+        session.merge(client);
     }
 
     @Override

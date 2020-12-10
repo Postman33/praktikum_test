@@ -34,7 +34,8 @@ public class MainController {
     @RequestMapping("/saveClient")
     public String saveEmployee(@ModelAttribute("client_info") Client client) {
         System.out.println("test");
-        System.out.println(client);
+        client.getCourses();
+        System.out.println("COURSES = " + client.getCourses());
         service.SaveClient(client);
         return "redirect:/clients";
     }

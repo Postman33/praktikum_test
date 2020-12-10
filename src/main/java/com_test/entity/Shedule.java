@@ -1,15 +1,19 @@
 package com_test.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
-@Embeddable
-class CompositeKey implements Serializable {
 
+@Entity
+@Table(name = "Shedule")
+public class Shedule {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "SheduleID")
+    private int id;
 
     @Column(name = "CourseID")
-    private int id;
+    private int courseid;
 
     @Column(name = "HEADER")
     private String header;
@@ -18,12 +22,36 @@ class CompositeKey implements Serializable {
     @Column(name = "S_WEEK")
     private int week;
 
+
+    @Column(name = "MAX_MARK")
+    private double max_mark;
+
+
+
+    public Shedule() {
+    }
+
+    public Shedule(int courseID, String header, int week, double max_mark) {
+        this.courseid = courseID;
+        this.header = header;
+        this.week = week;
+        this.max_mark = max_mark;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(int courseID) {
+        this.courseid = courseID;
     }
 
     public String getHeader() {
@@ -42,57 +70,6 @@ class CompositeKey implements Serializable {
         this.week = week;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CompositeKey that = (CompositeKey) o;
-        return id == that.id &&
-                week == that.week &&
-                Objects.equals(header, that.header);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, header, week);
-    }
-
-    @Override
-    public String toString() {
-        return "CompositeKey{" +
-                "id=" + id +
-                ", header='" + header + '\'' +
-                ", week=" + week +
-                '}';
-    }
-}
-
-@Entity
-@Table(name = "Shedule")
-public class Shedule {
-    @EmbeddedId
-    private CompositeKey id;
-
-    @Column(name = "MAX_MARK")
-    private double max_mark;
-
-
-    public Shedule() {
-    }
-
-    public Shedule(CompositeKey id, double max_mark) {
-        this.id = id;
-        this.max_mark = max_mark;
-    }
-
-    public CompositeKey getId() {
-        return id;
-    }
-
-    public void setId(CompositeKey id) {
-        this.id = id;
-    }
-
     public double getMax_mark() {
         return max_mark;
     }
@@ -105,6 +82,9 @@ public class Shedule {
     public String toString() {
         return "Shedule{" +
                 "id=" + id +
+                ", courseID='" + courseid + '\'' +
+                ", header='" + header + '\'' +
+                ", week=" + week +
                 ", max_mark=" + max_mark +
                 '}';
     }

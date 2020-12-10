@@ -1,8 +1,10 @@
 package com_test.service;
 
 import com_test.dao.IClientDAO;
+import com_test.dao.ICourseDAO;
 import com_test.dao.ITeacherDAO;
 import com_test.entity.Client;
+import com_test.entity.Course;
 import com_test.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,8 +16,8 @@ public class MainServiceCOM implements  IService{
     private IClientDAO clientDAO;
     @Autowired
     private ITeacherDAO teacherDAO;
-
-
+    @Autowired
+    private ICourseDAO courseDAO;
 
     //                        CLIENTS
     // ==============================================================
@@ -71,6 +73,41 @@ public class MainServiceCOM implements  IService{
         teacherDAO.deleteTeacher(id);
     }
 
+
+
+
+    //                        COURSES
+    // ==============================================================
+    // ==============================================================
+    @Transactional
+    @Override
+    public List<Course> getAllCourses() {
+        return courseDAO.getAllCourses();
+    }
+
+    @Transactional
+    @Override
+    public void SaveCourse(Course course) {
+    courseDAO.SaveOrUpdate(course);
+    }
+
+    @Transactional
+    @Override
+    public Course getCourseById(int id) {
+        return courseDAO.getCourseById(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteCourse(int id) {
+        courseDAO.deleteCourse(id);
+    }
+
+    @Transactional
+    @Override
+    public void persistcourse(Course course) {
+        courseDAO.persists(course);
+    }
 
 
 }
