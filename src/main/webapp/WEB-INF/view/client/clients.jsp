@@ -9,12 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Title</title>
+    <title>Клиенты</title>
 </head>
 <body>
 <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
-    <h2>Clients</h2>
-    <input type="text" value="Add"/>
+    <h1>Clients</h1>
+    <h2>Введите ФИО клиента:</h2>
+    <input  id='value' type="text" value=""/>
+    <input id='search' type="button" value="Найти" style="margin-left:5%">
+    <input id='showAll' type="button" value="Показать всех" style="margin-left:5%">
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
     <table  class="table table-striped table-bordered">
         <thead>
@@ -46,32 +49,7 @@
                 </th>
             </tr>
         </c:forEach>
-        <tr class="success">
-            <td>Success</td>
-            <td>Doe</td>
-            <td>-</td>
-        </tr>
-        <tr class="danger">
-            <td>Danger</td>
-            <td>Moe</td>
-            <td>-</td>
 
-        </tr>
-        <tr class="info">
-            <td>Info</td>
-            <td>Dooley</td>
-            <td>-</td>
-        </tr>
-        <tr class="warning">
-            <td>Warning</td>
-            <td>Refs</td>
-            <td>-</td>
-        </tr>
-        <tr class="active">
-            <td>Active</td>
-            <td>Activeson</td>
-            <td>-</td>
-        </tr>
         </tbody>
     </table>
 </div>
@@ -81,6 +59,9 @@
 </div>
 <input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
 </body>
+<script type="text/javascript">
+    <%@include file="/WEB-INF/scripts/script.js"%>
+</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="Client")
+@Table(name="client")
 public class Client {
 
     @Column(name = "ClientID")
