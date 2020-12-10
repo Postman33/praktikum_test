@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Alexander
-  Date: 08.12.2020
-  Time: 19:06
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -15,20 +7,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Title</title>
 </head>
 <body>
-<div class="container" >
-    <h2>Teachers</h2>
+<div class="container">
+    <h2>Courses</h2>
     <input type="text" value="Add"/>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
     <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
-    <table  class="table table-striped table-bordered" >
+    <table  class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>FIO</th>
+            <th>CourseName</th>
             <th>Birthday</th>
             <th>Operations</th>
         </tr>
@@ -36,27 +28,27 @@
         </thead>
         <tbody>
 
-        <c:forEach var="person" items="${teachers}">
-            <c:url var="updateButton" value="/updateTeacher">
-                <c:param name="teacher_id" value="${person.id}"/>
+        <c:forEach var="course" items="${courses}">
+            <c:url var="updateButton" value="/updateCourse">
+                <c:param name="course_id" value="${course.id}"/>
             </c:url>
-            <c:url var="deleteButton" value="/deleteTeacher">
-                <c:param name="teacher_id" value="${person.id}"/>
+            <c:url var="deleteButton" value="/deleteCourse">
+                <c:param name="course_id" value="${course.id}"/>
             </c:url>
             <tr>
-                <td>${person.name}</td>
-                <td>${person.birthday}</td>
+                <td>${course.name}</td>
+                <td>${course.price}</td>
                 <th>
 
 
-                        <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                    <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
+                    <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
+                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">View</button>
                     <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
                 </th>
             </tr>
         </c:forEach>
         <tr class="success">
-            <td class="hrrr">Success</td>
+            <td>Success</td>
             <td>Doe</td>
             <td>-</td>
         </tr>
@@ -84,14 +76,16 @@
         </tbody>
     </table>
 </div>
-    <button class="btn  button-bottom-crud btn-info btn-block text-light " type="submit" onclick="window.location.href='/addTeacher'">Add</button>
+<div>
 
 </div>
-<input type="button" value="Add" onclick="window.location.href='/addTeacher'" style="margin-left: 30%"/>
+    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addCourse'">Add</button>
+
+</div>
+<input type="button" value="Add" onclick="window.location.href='/addCourse'" style="margin-left: 30%"/>
 </body>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
-<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css" type="text/css">--%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">

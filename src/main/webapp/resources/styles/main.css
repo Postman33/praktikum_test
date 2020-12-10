@@ -2,3 +2,12 @@
 .hshs {
     color: red !important;
 }
+
+.btn.button-bottom-crud {
+    margin-top: 30px;
+
+    font-size: 25px;
+    width: 40%;
+    margin-left: 49%;
+
+}

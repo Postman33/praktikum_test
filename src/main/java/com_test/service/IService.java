@@ -1,6 +1,7 @@
 package com_test.service;
 
 import com_test.entity.Client;
+import com_test.entity.Course;
 import com_test.entity.Teacher;
 
 import java.util.List;
@@ -26,4 +27,16 @@ public interface IService {
 
     public void deleteTeacher(int id);
 
+
+    // COURSES
+    public List<Course> getAllCourses();
+
+    public void SaveCourse(Course course);
+
+    public Course getCourseById(int id);
+
+    public void deleteCourse(int id);
+
+
+    void persistcourse(Course course);
 }

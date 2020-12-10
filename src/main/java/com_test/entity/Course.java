@@ -1,9 +1,11 @@
 package com_test.entity;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Course")
@@ -26,17 +28,29 @@ public class Course {
 
 
 
-    @ManyToMany( cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable( name = "CourseTeachers",
-            inverseJoinColumns = @JoinColumn(name = "teacher_id"),
-            joinColumns = @JoinColumn(name = "course_id") )
-    private List<Teacher> teachers;
+//    @ManyToMany
+//    @JoinTable( name = "CourseTeachers",
+//            inverseJoinColumns = @JoinColumn(name = "teacherid"),
+//            joinColumns = @JoinColumn(name = "courseid") )
+//    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+//    private List<Teacher> teachers;
 
 
-//    @OneToMany(cascade = {CascadeType.ALL})
-//    @JoinColumn(name="Shedule_id")
-//
-//    private List<Shedule> sheduleList;
+    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinTable(name = "course_client",
+            joinColumns = {
+                    @JoinColumn(name = "coursesid")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "clientsid")})
+
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
+    private Set<Client> clients= new HashSet<>();
+
+
+//    @OneToMany()
+//    @JoinColumn(name = "courseid")
+//    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+//    private Set<Shedule> sheduleList;
 
 
 
@@ -84,14 +98,38 @@ public class Course {
         this.price = price;
     }
 
-    public List<Teacher> getTeachers() {
-        return teachers;
+//    public List<Teacher> getTeachers() {
+//        return teachers;
+//    }
+//
+//    public void setTeachers(List<Teacher> teachers) {
+//        this.teachers = teachers;
+//    }
+
+    public Set<Client> getClients() {
+        return clients;
     }
 
-    public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
+    public void setClients(Set<Client> clients) {
+
+        this.clients = clients;
     }
 
+//    public Set<Shedule> getSheduleList() {
+//        return sheduleList;
+//    }
+//
+//    public void setSheduleList(Set<Shedule> sheduleList) {
+//        this.sheduleList = sheduleList;
+//    }
+    public void addClient(Client client){
+        if (clients==null) clients=new HashSet<>();
+        clients.add(client);
+    }
+    public void removeClient(Client client){
+        if (clients==null) clients=new HashSet<>();
+        clients.remove(client);
+    }
     @Override
     public String toString() {
         return "Course{" +
@@ -100,5 +138,20 @@ public class Course {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Double.compare(course.price, price) == 0 &&
+                Objects.equals(name, course.name) &&
+                Objects.equals(description, course.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, price);
     }
 }

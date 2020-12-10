@@ -12,10 +12,11 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+<div class="container">
     <h2>Clients</h2>
     <input type="text" value="Add"/>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
     <table  class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -76,11 +77,14 @@
     </table>
 </div>
 <div>
-    <button class="btn btn-info btn-block text-light" style="margin-left:15%; font-size: 20px; width: 70%"  type="submit" onclick="window.location.href='/addClient'">Add</button>
+
+</div>
+    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addClient'">Add</button>
 
 </div>
 <input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
 </body>
+<link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -57,6 +57,7 @@ public class Config {
         Properties hibernate = new Properties();
         hibernate.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernate.setProperty("hibernate.show_sql", "true");
+
         sessionFactory.setHibernateProperties(hibernate);
         return sessionFactory;
     }

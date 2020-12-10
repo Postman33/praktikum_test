@@ -21,7 +21,7 @@ public class Teacher {
     private Date Birthday;
 
 
-    @ManyToMany( cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToMany( cascade = {CascadeType.PERSIST})
     @JoinTable( name = "CourseTeachers", joinColumns = @JoinColumn(name = "teacher_id"),
     inverseJoinColumns = @JoinColumn(name = "course_id") )
     private List<Course> courses;
