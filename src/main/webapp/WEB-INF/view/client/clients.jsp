@@ -37,12 +37,10 @@
             <c:url var="deleteButton" value="/deleteClient">
                 <c:param name="client_id" value="${person.id}"/>
             </c:url>
-            <tr>
+            <tr class="elements">
                 <td>${person.name}</td>
                 <td>${person.birthday}</td>
                 <th>
-
-
                     <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                         <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
                     <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
