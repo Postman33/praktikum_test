@@ -1,13 +1,14 @@
 package com_test.service;
 
-import com_test.entity.Client;
-import com_test.entity.Course;
-import com_test.entity.Teacher;
+import com_test.entity.*;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface IService {
-    // CLIENTS
+    //                        CLIENTS
+    // ==============================================================
+    // ==============================================================
     public List<Client> getClients();
 
     public void SaveClient(Client client);
@@ -18,7 +19,9 @@ public interface IService {
 
 
 
-    // TEACHERS
+    //                        TEACHERS
+    // ==============================================================
+    // ==============================================================
     public List<Teacher> getAllTeachers();
 
     public void SaveTeacher(Teacher teacher);
@@ -28,7 +31,9 @@ public interface IService {
     public void deleteTeacher(int id);
 
 
-    // COURSES
+    //                        COURSES
+    // ==============================================================
+    // ==============================================================
     public List<Course> getAllCourses();
 
     public void SaveCourse(Course course);
@@ -36,7 +41,25 @@ public interface IService {
     public Course getCourseById(int id);
 
     public void deleteCourse(int id);
-
-
     void persistcourse(Course course);
+
+
+    //                        MARKS
+    // ==============================================================
+    // ==============================================================
+
+
+
+    public List<Mark> getAllMarks();
+
+    public List<Mark> filterByClient(int clientid);
+    public List<Mark> filterByCourse(int courseid);
+    public List<Mark> filterCustom(Predicate<Mark> predicate);
+
+
+    public void SaveMark(Mark mark);
+
+    public Mark getMarkByID(MarkKey id);
+
+    public void deleteMark(MarkKey id);
 }

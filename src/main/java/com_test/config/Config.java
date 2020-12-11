@@ -41,7 +41,7 @@ public class Config {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
 
-        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=Europe/Moscow");
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8");
         comboPooledDataSource.setUser("root");
         comboPooledDataSource.setPassword("root");
 
@@ -55,8 +55,9 @@ public class Config {
         sessionFactory.setPackagesToScan("com_test");
 
         Properties hibernate = new Properties();
-        hibernate.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        hibernate.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         hibernate.setProperty("hibernate.show_sql", "true");
+
 
         sessionFactory.setHibernateProperties(hibernate);
         return sessionFactory;

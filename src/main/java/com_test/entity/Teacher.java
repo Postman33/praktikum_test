@@ -21,11 +21,11 @@ public class Teacher {
     private Date Birthday;
 
 
-    @ManyToMany( cascade = {CascadeType.PERSIST})
-    @JoinTable( name = "CourseTeachers", joinColumns = @JoinColumn(name = "teacher_id"),
-    inverseJoinColumns = @JoinColumn(name = "course_id") )
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST})
+    @JoinTable( name = "courseteachers", joinColumns = @JoinColumn(name = "teacherid"),
+    inverseJoinColumns = @JoinColumn(name = "courseid") )
     private List<Course> courses;
-
+// TODO: выдавать информацию учителю о его курсах в TeacherController
     public Teacher() {
     }
 

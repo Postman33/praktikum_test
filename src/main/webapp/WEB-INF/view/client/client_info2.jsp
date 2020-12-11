@@ -6,7 +6,7 @@
   Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
@@ -25,6 +25,7 @@
                 <div class="form-group">
                     <label for="inputName" class="control-label">Имя клиента</label>
                     <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Введите имя" />
+                    <form:errors path="name"/>
                 </div>
        <%--         <div class="form-group has-feedback">--%>
 <%--                    <label for="inputTwitter" class="control-label">Twitter</label>--%>

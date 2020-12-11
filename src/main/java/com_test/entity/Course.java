@@ -28,12 +28,9 @@ public class Course {
 
 
 
-//    @ManyToMany
-//    @JoinTable( name = "CourseTeachers",
-//            inverseJoinColumns = @JoinColumn(name = "teacherid"),
-//            joinColumns = @JoinColumn(name = "courseid") )
-//    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-//    private List<Teacher> teachers;
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    private Set<Teacher> teachers;
 
 
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
@@ -98,13 +95,13 @@ public class Course {
         this.price = price;
     }
 
-//    public List<Teacher> getTeachers() {
-//        return teachers;
-//    }
-//
-//    public void setTeachers(List<Teacher> teachers) {
-//        this.teachers = teachers;
-//    }
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 
     public Set<Client> getClients() {
         return clients;
@@ -130,6 +127,16 @@ public class Course {
         if (clients==null) clients=new HashSet<>();
         clients.remove(client);
     }
+
+    public void addTeacher(Teacher teacher){
+        if (teachers==null) teachers=new HashSet<>();
+        teachers.add(teacher);
+    }
+    public void removeTeacher(Teacher teacher){
+        if (teachers==null) teachers=new HashSet<>();
+        teachers.remove(teacher);
+    }
+
     @Override
     public String toString() {
         return "Course{" +

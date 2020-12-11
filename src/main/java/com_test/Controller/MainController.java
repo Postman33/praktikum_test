@@ -6,11 +6,13 @@ import com_test.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -35,10 +37,13 @@ public class MainController {
         return "client/clients";
     }
     @RequestMapping("/saveClient")
-    public String saveEmployee(@ModelAttribute("client_info") Client client) {
+    public String saveEmployee(@Valid @ModelAttribute("client_info") Client client, BindingResult result) {
         System.out.println("test");
-        client.getCourses();
-        System.out.println("COURSES = " + client.getCourses());
+    if (result.hasErrors()){
+        return "client/client_info2";
+    }
+        System.out.println(client);
+
         service.SaveClient(client);
         return "redirect:/clients";
     }

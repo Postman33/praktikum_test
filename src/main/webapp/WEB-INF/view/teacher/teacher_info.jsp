@@ -6,7 +6,8 @@
   Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>

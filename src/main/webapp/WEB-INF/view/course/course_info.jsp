@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -25,9 +25,7 @@
 
                 <form:hidden path="id"/>
 
-
-
-
+                <input type="hidden" name="exists" value="${exists}">
                 <div class="form-group">
                     <label for="inputName" class="control-label">Название курса</label>
 
@@ -79,7 +77,8 @@
                                     <c:param name="client_id" value="${person.id}"/>
                                 </c:url>
                                 <tr>
-                                    <td>${person.name}</td>
+                                    <td><input type="hidden" name="id" value="${person.id}">
+                                            ${person.name}</td>
                                     <td>${person.birthday}</td>
                                     <th>
 
@@ -105,9 +104,10 @@
                 <div class="form-group">
                     <select id="sel">
                         <c:forEach var="client" items="${all_clients}">
-                            <option value="${client.id}">${client.name}</option>
+                            <option value="${client.id}">${client.name}|${client.birthday}</option>
                         </c:forEach>
                     </select>
+
                     <input type="button" value="Test" onclick="addRow('super-table',document.getElementById('sel').value )">
                 </div>
 

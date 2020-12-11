@@ -3,8 +3,13 @@ package com_test.entity;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.*;
@@ -13,14 +18,19 @@ import java.util.*;
 @Table(name="Client")
 public class Client {
 
+
+
     @Column(name = "ClientID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
 
+    @NotBlank(message = "Не должно быть пустым")
+    @Size(min = 3, message = "Минимум 3 символа")
     @Column(name = "FIO")
     private String name;
+
 
 
     @Column(name = "Birthday")

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 import javax.sql.DataSource;
 
@@ -30,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
         http.authorizeRequests().antMatchers("/").hasAnyRole("Emp")
                 .antMatchers("/hr").hasRole("te")
                 .and().formLogin().permitAll();

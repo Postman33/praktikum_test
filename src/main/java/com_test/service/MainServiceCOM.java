@@ -2,14 +2,15 @@ package com_test.service;
 
 import com_test.dao.IClientDAO;
 import com_test.dao.ICourseDAO;
+import com_test.dao.IMarkDAO;
 import com_test.dao.ITeacherDAO;
-import com_test.entity.Client;
-import com_test.entity.Course;
-import com_test.entity.Teacher;
+import com_test.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.function.Predicate;
+
 @org.springframework.stereotype.Service
 public class MainServiceCOM implements  IService{
     @Autowired
@@ -18,6 +19,9 @@ public class MainServiceCOM implements  IService{
     private ITeacherDAO teacherDAO;
     @Autowired
     private ICourseDAO courseDAO;
+    @Autowired
+    private IMarkDAO markDAO;
+
 
     //                        CLIENTS
     // ==============================================================
@@ -108,6 +112,55 @@ public class MainServiceCOM implements  IService{
     public void persistcourse(Course course) {
         courseDAO.persists(course);
     }
+
+
+
+    //                        MARKS
+    // ==============================================================
+    // ==============================================================
+
+    @Transactional
+    @Override
+    public List<Mark> getAllMarks() {
+        return markDAO.getAllMarks();
+    }
+
+    @Transactional
+    @Override
+    public List<Mark> filterByClient(int clientid) {
+        return markDAO.filterByClient(clientid);
+    }
+
+    @Transactional
+    @Override
+    public List<Mark> filterByCourse(int courseid) {
+        return markDAO.filterByCourse(courseid);
+    }
+
+    @Transactional
+    @Override
+    public List<Mark> filterCustom(Predicate<Mark> predicate) {
+        return markDAO.filterCustom(predicate);
+    }
+
+    @Transactional
+    @Override
+    public void SaveMark(Mark mark) {
+        markDAO.SaveMark(mark);
+    }
+
+    @Transactional
+    @Override
+    public Mark getMarkByID(MarkKey id) {
+        return markDAO.getMarkByID(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteMark(MarkKey id) {
+        markDAO.deleteMark( id );
+    }
+
 
 
 }

@@ -34,22 +34,28 @@ public class CourseController {
         return "course/courses";
     }
     @RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
-    public String saveTeacher(@ModelAttribute("course_info") Course course) {
+    public String saveTeacher(@ModelAttribute("course_info") Course course, @RequestParam("exists") boolean exists) {
+//        Course course2 = service.getCourseById( course.getId() );
+    if(exists) {
         Course course2 = service.getCourseById( course.getId() );
-
-
-       course2.setName(course.getName());
-       course2.setDescription(course.getDescription());
-       course2.setPrice(course.getPrice());
-
+        course2.setName(course.getName());
+        course2.setDescription(course.getDescription());
+        course2.setPrice(course.getPrice());
         service.SaveCourse(course2);
+    }else {
+        service.SaveCourse(course);
+    }
+
         return "redirect:/courses";
     }
+
+
     @RequestMapping("/updateCourse")
     public String updateTeacher(@RequestParam("course_id") int id, Model model) {
         Course course   = service.getCourseById( id );
         model.addAttribute("course_info",course);
         model.addAttribute("all_clients",service.getClients());
+        model.addAttribute("exists",true);
         return "course/course_info";
     }
 
@@ -64,6 +70,7 @@ public class CourseController {
     public String addCl(Model model) {
         Course course  = new Course();
         model.addAttribute("course_info",course);
+        model.addAttribute("exists",false);
         return "course/course_info";
     }
 

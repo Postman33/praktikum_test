@@ -2,6 +2,8 @@ package com_test.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+
+
 public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -17,6 +19,8 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+
 
 
 }
