@@ -49,6 +49,7 @@ public class CourseController {
     public String updateTeacher(@RequestParam("course_id") int id, Model model) {
         Course course   = service.getCourseById( id );
         model.addAttribute("course_info",course);
+        model.addAttribute("all_clients",service.getClients());
         return "course/course_info";
     }
 
