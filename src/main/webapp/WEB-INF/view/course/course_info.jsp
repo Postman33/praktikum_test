@@ -8,11 +8,12 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
-<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
 <br>
 <br>
 <div class="container">
@@ -54,7 +55,7 @@
                     <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="container">
+                <div class="container" style="margin-left: -50%;">
                     <h2>Clients</h2>
                     <input type="text" value="Add"/>
                     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
@@ -84,7 +85,7 @@
 
 
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="">Update</button>
+
                                         <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="">Delete</button>
                                     </th>
                                 </tr>
@@ -121,7 +122,7 @@
         </div>
     </div>
 </div>
-
+</body>
 <SCRIPT language="javascript">
     function addRow(tableID, text) {
 
@@ -182,3 +183,8 @@
     }
 
 </SCRIPT>
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
+</html>
