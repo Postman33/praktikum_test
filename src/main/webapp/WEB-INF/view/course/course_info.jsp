@@ -6,12 +6,14 @@
   Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
-<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
 <br>
 <br>
 <div class="container">
@@ -23,8 +25,11 @@
 
                 <form:hidden path="id"/>
 
+
+
+
                 <div class="form-group">
-                    <label for="inputName" class="control-label">Имя клиента</label>
+                    <label for="inputName" class="control-label">Название курса</label>
 
                     <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Название курса" />
                 </div>
@@ -50,14 +55,136 @@
                     <div class="help-block with-errors"></div>
                 </div>
 
+                <div class="container" style="margin-left: -50%;">
+                    <h2>Clients</h2>
+                    <input type="text" value="Add"/>
+                    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+                    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+                        <table id="super-table"  class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>FIO</th>
+                                <th>Birthday</th>
+                                <th>Operations</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+
+                            <c:forEach var="person" items="${course_info.clients}">
+                                <c:url var="updateButton" value="/updateClient">
+                                    <c:param name="client_id" value="${person.id}"/>
+                                </c:url>
+                                <c:url var="deleteButton" value="/deleteClient">
+                                    <c:param name="client_id" value="${person.id}"/>
+                                </c:url>
+                                <tr>
+                                    <td>${person.name}</td>
+                                    <td>${person.birthday}</td>
+                                    <th>
+
+
+                                            <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
+
+                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="">Delete</button>
+                                    </th>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+
+                    </div>
+<%--                    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="addRow('super-table')">Add</button>--%>
+
+
+
+                </div>
+
+                <div class="form-group">
+                    <select id="sel">
+                        <c:forEach var="client" items="${all_clients}">
+                            <option value="${client.id}">${client.name}</option>
+                        </c:forEach>
+                    </select>
+                    <input type="button" value="Test" onclick="addRow('super-table',document.getElementById('sel').value )">
+                </div>
 
                 <div class="form-group">
                     <input class="btn btn-info" type="submit" value="OK">
-
                 </div>
+
+
 
             </form:form>
 
         </div>
     </div>
 </div>
+</body>
+<SCRIPT language="javascript">
+    function addRow(tableID, text) {
+
+        var table = document.getElementById(tableID);
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+        var element1 = document.createElement("input");
+        element1.type = "text";
+        element1.name=text;
+        element1.value=text;
+
+        cell1.appendChild(element1);
+
+
+        var element2 = document.createElement("input");
+        element2.type = "hidden";
+        element2.name="chkbox";
+
+
+        cell1.appendChild(element2);
+
+
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = rowCount + 1;
+
+        var cell3 = row.insertCell(2);
+        var element2 = document.createElement("input");
+        element2.type = "text";
+        element2.name = "txtbox[]";
+        cell3.appendChild(element2);
+
+
+
+    }
+
+    function deleteRow(tableID) {
+        try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+
+            for(var i=0; i<rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[0].childNodes[0];
+                if(null != chkbox && true == chkbox.checked) {
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+
+
+            }
+        }catch(e) {
+            alert(e);
+        }
+    }
+
+</SCRIPT>
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
+</html>

@@ -28,6 +28,9 @@ public class MainController {
     @RequestMapping("/clients")
     public String getAllClients(Model model) {
         List<Client> emps = service.getClients();
+        for (Client d : emps){
+            System.out.println(d.getCourses());
+        }
         model.addAttribute("clients", emps);
         return "client/clients";
     }
