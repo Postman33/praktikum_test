@@ -144,9 +144,7 @@
 
         var element2 = document.createElement("input");
         element2.type = "hidden";
-        element2.name="chkbox";
-
-
+        element2.name="id";
         cell1.appendChild(element2);
 
 

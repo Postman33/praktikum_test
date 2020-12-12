@@ -41,18 +41,22 @@ public class CourseController {
             course2.setName(course.getName());
             course2.setDescription(course.getDescription());
             course2.setPrice(course.getPrice());
-            for (Integer i:id) {
-                Client client = service.getClientById(i);
-                if(!course2.getClients().contains(client))
-                    course2.addClient(client);
+            if (id != null) {
+                for (Integer i : id) {
+                    Client client = service.getClientById(i);
+                    if (!course2.getClients().contains(client))
+                        course2.addClient(client);
+                }
             }
             service.SaveCourse(course2);
         }else {
             System.out.println("course.getClients() = " + course.getClients());
-            for (Integer i : id) {
-                Client client = service.getClientById(i);
-                if (!course.getClients().contains(client))
-                    course.addClient(client);
+            if (id != null) {
+                for (Integer i : id) {
+                    Client client = service.getClientById(i);
+                    if (!course.getClients().contains(client))
+                        course.addClient(client);
+                }
             }
             service.SaveCourse(course);
         }
@@ -79,6 +83,7 @@ public class CourseController {
     public String addCl(Model model) {
         Course course = new Course();
         model.addAttribute("course_info",course);
+        model.addAttribute("all_clients",service.getClients());
         model.addAttribute("exists",false);
         return "course/course_info";
     }
