@@ -21,7 +21,7 @@
         <thead>
         <tr>
             <th>CourseName</th>
-            <th>Birthday</th>
+            <th>Price</th>
             <th>Operations</th>
         </tr>
 

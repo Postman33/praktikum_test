@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Entity
-@Table(name="Client")
+@Table(name="client")
 public class Client {
 
 
@@ -40,7 +40,7 @@ public class Client {
 
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
    // @OnDelete(action = OnDeleteAction.NO_ACTION)
-    private Set<Course> courses = new HashSet<>();;
+    private Set<Course> courses = new HashSet<>();
 
 
 
@@ -111,12 +111,11 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(name, client.name) &&
-                Objects.equals(Birthday, client.Birthday);
+        return id == client.id && Objects.equals(name, client.name) && Objects.equals(Birthday, client.Birthday);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, Birthday);
+        return Objects.hash(id, name, Birthday);
     }
 }

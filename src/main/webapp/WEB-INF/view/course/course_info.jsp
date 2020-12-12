@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -22,10 +22,12 @@
 
 
             <form:form modelAttribute="course_info" action="/saveCourse" method="post">
-
+                <input type="hidden" name="exists" value="${exists}">
                 <form:hidden path="id"/>
 
-                <input type="hidden" name="exists" value="${exists}">
+
+
+
                 <div class="form-group">
                     <label for="inputName" class="control-label">Название курса</label>
 
@@ -77,11 +79,9 @@
                                     <c:param name="client_id" value="${person.id}"/>
                                 </c:url>
                                 <tr>
-                                    <td><input type="hidden" name="id" value="${person.id}">
-                                            ${person.name}</td>
+                                    <td><input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> ${person.name}</td>
                                     <td>${person.birthday}</td>
                                     <th>
-
 
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
 
@@ -104,11 +104,10 @@
                 <div class="form-group">
                     <select id="sel">
                         <c:forEach var="client" items="${all_clients}">
-                            <option value="${client.id}">${client.name}|${client.birthday}</option>
+                            <option value="${client.id}">${client.name}/${client.birthday}</option>
                         </c:forEach>
                     </select>
-
-                    <input type="button" value="Test" onclick="addRow('super-table',document.getElementById('sel').value )">
+                    <input  id="testbut" type="button" value="Test">
                 </div>
 
                 <div class="form-group">
@@ -123,6 +122,9 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    <%@include file="/WEB-INF/scripts/script_for_course_info.js"%>
+</script>
 <SCRIPT language="javascript">
     function addRow(tableID, text) {
 
