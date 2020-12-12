@@ -23,6 +23,8 @@ function addTotable(table,clients){
     element2.name="id2";
     cell1.appendChild(element2);
     var del_but = document.createElement("button");
+    del_but.className="btn btn-danger"
+    del_but.style="font-size: 16px;"
     del_but.onclick=()=>{
         del_but.parentElement.closest('tr').remove()
     }
