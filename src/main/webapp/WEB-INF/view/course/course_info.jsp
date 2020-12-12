@@ -79,13 +79,11 @@
                                     <c:param name="client_id" value="${person.id}"/>
                                 </c:url>
                                 <tr>
-                                    <td><input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> ${person.name}</td>
+                                    <td><%--<input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> --%>${person.name}</td>
                                     <td>${person.birthday}</td>
                                     <th>
-
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-
-                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="">Delete</button>
+                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="DeleteRow( this )">Delete</button>
                                     </th>
                                 </tr>
                             </c:forEach>
@@ -96,15 +94,15 @@
 
                     </div>
 <%--                    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="addRow('super-table')">Add</button>--%>
-
-
-
                 </div>
+
+
+
 
                 <div class="form-group">
                     <select id="sel">
                         <c:forEach var="client" items="${all_clients}">
-                            <option value="${client.id}">${client.name}/${client.birthday}</option>
+                            <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
                         </c:forEach>
                     </select>
                     <input  id="testbut" type="button" value="Test">
@@ -123,7 +121,7 @@
 </div>
 </body>
 <script type="text/javascript">
-    <%@include file="/WEB-INF/scripts/script_for_course_info.js"%>
+    <%@include file="/resources/scripts/script_for_course_info.js"%>
 </script>
 <SCRIPT language="javascript">
     function addRow(tableID, text) {

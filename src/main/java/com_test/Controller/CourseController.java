@@ -60,7 +60,6 @@ public class CourseController {
             }
             service.SaveCourse(course);
         }
-
         return "redirect:/courses";
     }
     @RequestMapping("/updateCourse")

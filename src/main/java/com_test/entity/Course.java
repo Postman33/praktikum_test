@@ -152,7 +152,7 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return id == course.id && Double.compare(course.price, price) == 0 && Objects.equals(name, course.name) && Objects.equals(description, course.description);
+        return id==course.id;
     }
 
     @Override
