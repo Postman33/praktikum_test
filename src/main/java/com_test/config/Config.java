@@ -43,7 +43,7 @@ public class Config {
 
         comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8");
         comboPooledDataSource.setUser("root");
-        comboPooledDataSource.setPassword("root");
+        comboPooledDataSource.setPassword("кщще");
 
         return comboPooledDataSource;
     }
