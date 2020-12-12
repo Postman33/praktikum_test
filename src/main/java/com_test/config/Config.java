@@ -41,7 +41,7 @@ public class Config {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
 
-        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=Europe/Moscow");
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Moscow");
         comboPooledDataSource.setUser("root");
         comboPooledDataSource.setPassword("кщще");
 

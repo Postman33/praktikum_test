@@ -36,7 +36,7 @@ public class Course {
 //    private List<Teacher> teachers;
 
 
-    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "course_client",
             joinColumns = {
                     @JoinColumn(name = "coursesid")},
@@ -145,13 +145,11 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Double.compare(course.price, price) == 0 &&
-                Objects.equals(name, course.name) &&
-                Objects.equals(description, course.description);
+        return id == course.id && Double.compare(course.price, price) == 0 && Objects.equals(name, course.name) && Objects.equals(description, course.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, price);
+        return Objects.hash(id, name, description, price);
     }
 }
