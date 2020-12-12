@@ -111,7 +111,7 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return id == client.id && Objects.equals(name, client.name) && Objects.equals(Birthday, client.Birthday);
+        return id == client.id;
     }
 
     @Override

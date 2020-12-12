@@ -30,3 +30,6 @@ function addTotable(table,clients){
     del_but.textContent='Delete'
     cell3.appendChild(del_but)
 }
+function DeleteRow( el ){
+    el.parentElement.closest('tr').remove();
+}
