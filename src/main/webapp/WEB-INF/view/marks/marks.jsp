@@ -22,8 +22,9 @@
     <table  class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>FIO</th>
             <th>Header</th>
+            <th>Mark</th>
+            <th>Date</th>
             <th>Operations</th>
         </tr>
 
@@ -48,22 +49,13 @@
             <tr class="elements">
                 <td>${mark.primaryKey.header}</td>
                 <td>${mark.primaryKey.mark}</td>
+                <td>${mark.primaryKey.date}</td>
                 <th><%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                     <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
                     <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
                 </th>
             </tr>
         </c:forEach>
-
-        <tr class="elements">
-            <td>${mark.primaryKey.header}</td>
-            <td>${mark.primaryKey.mark}</td>
-            <th><%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
-                <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
-            </th>
-        </tr>
-
 
         </tbody>
     </table>
@@ -75,16 +67,18 @@
             <thead>
             <tr>
                 <th>Header</th>
+                <th>Mark</th>
                 <th>Date</th>
                 <th>Operations</th>
             </tr>
             </thead>
         <tbody>
         <tr class="elements">
-            <td>00</td>
-            <td>0</td>
+            <td><input name="mark.primarykey[1].header" type="text"></td>
+            <td><input type="number"></td>
+            <td><input type="date"></td>
             <th><%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">+</button>
+                <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;">+</button>
 
             </th>
         </tr>
