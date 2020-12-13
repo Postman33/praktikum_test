@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 @Repository
 public class MarkDAO implements IMarkDAO{
 
@@ -35,7 +37,10 @@ public class MarkDAO implements IMarkDAO{
 
     @Override
     public List<Mark> filterCustom(Predicate<Mark> predicate) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        List<Mark> marks = session.createQuery("from Mark",Mark.class).getResultList();
+        return marks.stream().filter(predicate).collect(Collectors.toList());
+
     }
 
     @Override

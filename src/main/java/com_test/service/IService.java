@@ -52,9 +52,9 @@ public interface IService {
 
     public List<Mark> getAllMarks();
 
-    public List<Mark> filterByClient(int clientid);
-    public List<Mark> filterByCourse(int courseid);
-    public List<Mark> filterCustom(Predicate<Mark> predicate);
+    public List<Mark> filterMarksByClient(int clientid);
+    public List<Mark> filterMarksByCourse(int courseid);
+    public List<Mark> filterMarksCustom(Predicate<Mark> predicate);
 
 
     public void SaveMark(Mark mark);
