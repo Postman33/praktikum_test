@@ -1,13 +1,11 @@
 package com_test.Controller;
 
-import com_test.entity.Client;
-import com_test.entity.Course;
-import com_test.entity.Mark;
-import com_test.entity.MarkKey;
+import com_test.entity.*;
 import com_test.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,15 +24,11 @@ public class MarkController {
     @RequestMapping("/test_marks")
     public String saveMarks() {
 
-        MarkKey key = new MarkKey(Date.valueOf(LocalDate.now()), 6, 13, 7, "Контрольная  работа");
-        MarkKey key2 = new MarkKey(Date.valueOf(LocalDate.now()), 12, 7, 7, "ыры  работа №2");
-        MarkKey key3 = new MarkKey(Date.valueOf(LocalDate.now()), 6, 7, 7, "Саып работа");
-        MarkKey key4 = new MarkKey(Date.valueOf(LocalDate.now()), 6, 13, 5, "rfg  работа");
 
-        Mark mark = new Mark(key);
-        Mark mark2 = new Mark(key2);
-        Mark mark3 = new Mark(key3);
-        Mark mark4 = new Mark(key4);
+        Mark mark = new Mark(Date.valueOf(LocalDate.now()), 6, 13, 7, "Контрольная  работа");
+        Mark mark2 = new Mark(Date.valueOf(LocalDate.now()), 12, 7, 7, "ыры  работа №2");
+        Mark mark3 = new Mark(Date.valueOf(LocalDate.now()), 6, 7, 7, "Саып работа");
+        Mark mark4 = new Mark(Date.valueOf(LocalDate.now()), 6, 13, 5, "rfg  работа");
 
         service.SaveMark(mark);
         service.SaveMark(mark2);
@@ -63,19 +57,35 @@ public class MarkController {
             model.addAttribute("clients", clients);
             model.addAttribute("courseid", courseid);
             return "marks/clients";
-        }
-        else {
-        List<Mark> marks=    service.filterMarksCustom( Mark -> {return Mark.getPrimaryKey().getClientid() == clientid.get() && Mark.getPrimaryKey().getCourseid() == courseid;});
-            System.out.println("SIZE ="+marks.size());
-        model.addAttribute("marks", marks);
+        } else {
 
-        return "marks/marks";
+            List<Mark> marks = service.filterMarksCustom(Mark -> {
+                return Mark.getClientid() == clientid.get() && Mark.getCourseid() == courseid;
+            });
+
+            MarkContainer container = new MarkContainer();
+            container.setMarks(marks);
+            model.addAttribute("marks", container);
+
+            Client client = service.getClientById(clientid.get());
+            Course course = service.getCourseById(courseid);
+            model.addAttribute("client", client);
+            model.addAttribute("course", course);
+            return "marks/marks";
         }
 
     }
 
-
-
+    @RequestMapping("/updateMark")
+    public String saveTeacher(@ModelAttribute("marks") MarkContainer marks) {
+        System.out.println("Not EMPTY!");
+        for (Mark mark : marks.getMarks()) {
+            System.out.println(mark);
+            service.SaveMark(mark);
+        }
+        System.out.println(marks.getMarks());
+        return "redirect:/teachers";
+    }
 
 
     @RequestMapping("/getMarks")
