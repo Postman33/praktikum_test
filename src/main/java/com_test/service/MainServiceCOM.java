@@ -127,19 +127,19 @@ public class MainServiceCOM implements  IService{
 
     @Transactional
     @Override
-    public List<Mark> filterByClient(int clientid) {
+    public List<Mark> filterMarksByClient(int clientid) {
         return markDAO.filterByClient(clientid);
     }
 
     @Transactional
     @Override
-    public List<Mark> filterByCourse(int courseid) {
+    public List<Mark> filterMarksByCourse(int courseid) {
         return markDAO.filterByCourse(courseid);
     }
 
     @Transactional
     @Override
-    public List<Mark> filterCustom(Predicate<Mark> predicate) {
+    public List<Mark> filterMarksCustom(Predicate<Mark> predicate) {
         return markDAO.filterCustom(predicate);
     }
 
