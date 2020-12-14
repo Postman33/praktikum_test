@@ -29,18 +29,17 @@ public class Course {
 
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private Set<Teacher> teachers;
 
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinTable(name = "course_client",
             joinColumns = {
                     @JoinColumn(name = "coursesid")},
             inverseJoinColumns = {
                     @JoinColumn(name = "clientsid")})
 
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
     private Set<Client> clients= new HashSet<>();
 
 

@@ -76,15 +76,63 @@ public class MarkController {
 
     }
 
+    @RequestMapping("/deleteMark")
+    public String deleteClient(@RequestParam("mark_id") int id,@RequestParam("client_id") int client_id,
+                               @RequestParam("course_id") int course_id, Model model) {
+        service.deleteMark( id );
+
+        return "redirect:/viewCourse?courseid="+course_id + "&clientid="+client_id;
+    }
+
     @RequestMapping("/updateMark")
-    public String saveTeacher(@ModelAttribute("marks") MarkContainer marks) {
-        System.out.println("Not EMPTY!");
-        for (Mark mark : marks.getMarks()) {
-            System.out.println(mark);
-            service.SaveMark(mark);
+    public String saveTeacher(@ModelAttribute("marks") MarkContainer marks, @RequestParam("action") String actionResult,
+                              @RequestParam("Header_") String header,
+                              @RequestParam("Mark_") Double Mark,
+                              @RequestParam("Date_") Date date, @RequestParam("courseid_") Integer courseid,
+                              @RequestParam("clientid_") Integer clientid, Model model ) {
+        System.out.println(actionResult);
+
+
+        if (marks.getMarks() != null) {
+            for (Mark mark0 : marks.getMarks()) {
+                System.out.println(mark0);
+                service.SaveMark(mark0);
+            }
         }
-        System.out.println(marks.getMarks());
-        return "redirect:/teachers";
+        if(actionResult.equals("addnew")){
+            System.out.println("Date = " + date);
+            Mark marknew = new Mark();
+            marknew.setHeader(header);
+            marknew.setDate(date);
+            marknew.setMark(Mark);
+            marknew.setClientid(clientid);
+            marknew.setCourseid(courseid);
+            service.SaveMark(marknew);
+
+            Client client = service.getClientById(clientid);
+            Course course = service.getCourseById(courseid);
+            model.addAttribute("client", client);
+            model.addAttribute("course", course);
+
+            List<Mark> marks2 = service.filterMarksCustom(Mark3 -> {
+                return Mark3.getClientid() == clientid && Mark3.getCourseid() == courseid;
+            });
+
+            MarkContainer container = new MarkContainer();
+            container.setMarks(marks2);
+            model.addAttribute("marks", container);
+
+
+            return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;
+        }
+
+        if(actionResult.split("\\s")[0].equals("delete")){
+            service.deleteMark(Integer.parseInt(actionResult.split("\\s")[1]));
+            return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;
+        }
+
+
+        return "marks/marks";
     }
 
 

@@ -59,7 +59,7 @@ public interface IService {
 
     public void SaveMark(Mark mark);
 
-    public Mark getMarkByID(MarkKey id);
+    public Mark getMarkByID(int id);
 
-    public void deleteMark(MarkKey id);
+    public void deleteMark(int id);
 }

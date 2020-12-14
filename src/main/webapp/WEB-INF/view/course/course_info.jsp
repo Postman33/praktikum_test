@@ -100,7 +100,7 @@
 
 
                 <div class="form-group">
-                    <select id="sel">
+                    <select id="elementId">
                         <c:forEach var="client" items="${all_clients}">
                             <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
                         </c:forEach>
@@ -119,68 +119,71 @@
         </div>
     </div>
 </div>
+<script>
+    window.onload = function () {
+
+        function getSelectedText( select ){
+            var sel = document.getElementById(select);
+            var index = sel.selectedIndex;
+            return sel.options[index].text;
+        }
+        function getSelectedValue( select ){
+            var sel = document.getElementById(select);
+            var index = sel.options.selectedIndex;
+            return sel.options[index].value;
+        }
+
+        function addTotable(table,clients) {
+
+            const rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            const str=clients.options[clients.options.selectedIndex].text.split('/')
+            cell1.innerText=str[0]
+            cell2.innerText=str[1]
+            var element2 = document.createElement("input");
+            element2.value=clients.options[clients.options.selectedIndex].value;
+            element2.type = "hidden";
+            element2.name="id2";
+            cell1.appendChild(element2);
+            var del_but = document.createElement("button");
+            del_but.className="btn btn-danger"
+            del_but.style="font-size: 16px;"
+            del_but.onclick=()=>{
+                del_but.parentElement.closest('tr').remove()
+            }
+            del_but.type = "button";
+            del_but.textContent='Delete'
+            cell3.appendChild(del_but)
+        }
+        function DeleteRow( el ){
+            el.parentElement.closest('tr').remove();
+        }
+
+
+        const clients = document.querySelector('select')
+
+
+        const testbut = document.getElementById('testbut')
+        const table = document.getElementById('super-table')
+
+
+        testbut.onclick = function (){
+            addTotable(document.getElementById('super-table'), document.querySelector('select'))
+        }
+
+    }
+
+
+</script>
+
 </body>
 <script type="text/javascript">
-    <%@include file="/resources/scripts/script_for_course_info.js"%>
+<%--    <%@include file="/resources/scripts/script_for_course_info.js"%>--%>
 </script>
-<SCRIPT language="javascript">
-    function addRow(tableID, text) {
 
-        var table = document.getElementById(tableID);
-
-        var rowCount = table.rows.length;
-        var row = table.insertRow(rowCount);
-
-        var cell1 = row.insertCell(0);
-        var element1 = document.createElement("input");
-        element1.type = "text";
-        element1.name=text;
-        element1.value=text;
-
-        cell1.appendChild(element1);
-
-
-        var element2 = document.createElement("input");
-        element2.type = "hidden";
-        element2.name="id";
-        cell1.appendChild(element2);
-
-
-        var cell2 = row.insertCell(1);
-        cell2.innerHTML = rowCount + 1;
-
-        var cell3 = row.insertCell(2);
-        var element2 = document.createElement("input");
-        element2.type = "text";
-        element2.name = "txtbox[]";
-        cell3.appendChild(element2);
-
-
-
-    }
-
-    function deleteRow(tableID) {
-        try {
-            var table = document.getElementById(tableID);
-            var rowCount = table.rows.length;
-
-            for(var i=0; i<rowCount; i++) {
-                var row = table.rows[i];
-                var chkbox = row.cells[0].childNodes[0];
-                if(null != chkbox && true == chkbox.checked) {
-                    table.deleteRow(i);
-                    rowCount--;
-                    i--;
-                }
-
-
-            }
-        }catch(e) {
-            alert(e);
-        }
-    }
-
-</SCRIPT>
 <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>

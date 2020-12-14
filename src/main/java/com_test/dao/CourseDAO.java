@@ -37,6 +37,7 @@ public class CourseDAO implements ICourseDAO {
     public void deleteCourse(int id) {
         Session session = sessionFactory.getCurrentSession();
         Course course=    session.createQuery("from Course where id = :et",Course.class).setParameter("et",id).getSingleResult();
+        // TODO: Нужно ли каскадное удаление? Проверить.
         session.delete(course);
     }
 

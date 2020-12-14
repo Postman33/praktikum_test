@@ -151,13 +151,13 @@ public class MainServiceCOM implements  IService{
 
     @Transactional
     @Override
-    public Mark getMarkByID(MarkKey id) {
+    public Mark getMarkByID(int id) {
         return markDAO.getMarkByID(id);
     }
 
     @Transactional
     @Override
-    public void deleteMark(MarkKey id) {
+    public void deleteMark(int id) {
         markDAO.deleteMark( id );
     }
 
