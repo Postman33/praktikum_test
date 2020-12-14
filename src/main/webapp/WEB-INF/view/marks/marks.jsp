@@ -30,9 +30,6 @@
 
         </thead>
         <tbody>
-
-
-
         <c:forEach var="mark" items="${marks}">
             <c:url var="updateMarkWithoutNewRow" value="/updateMark">
                 <c:param name="courseid" value="${mark.primaryKey.courseid}"/>
@@ -73,12 +70,12 @@
             </tr>
             </thead>
         <tbody>
-        <tr class="elements">
+        <tr id="tab_ele" class="elements">
             <td><input name="mark.primarykey[1].header" type="text"></td>
             <td><input type="number"></td>
             <td><input type="date"></td>
             <th><%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;">+</button>
+                <button id='add_but' type="button" class="btn btn-info" style="font-size: 16px; color: white !important;">+</button>
 
             </th>
         </tr>
@@ -96,7 +93,7 @@
 
 </body>
 <script type="text/javascript">
-    <%@include file="/WEB-INF/scripts/script.js"%>
+    <%@include file="/WEB-INF/scripts/script_for_marks.js"%>
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
