@@ -80,7 +80,8 @@
                                 </c:url>
                                 <tr>
                                     <td><%--<input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> --%>${person.name}</td>
-                                    <td>${person.birthday}</td>
+                                    <td>${person.birthday}
+                                    <input type="hidden" name="id2" value="${person.id}"> </td>
                                     <th>
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                                         <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="DeleteRow( this )">Delete</button>
@@ -120,7 +121,6 @@
     </div>
 </div>
 <script>
-    window.onload = function () {
 
         function getSelectedText( select ){
             var sel = document.getElementById(select);
@@ -172,7 +172,6 @@
 
         testbut.onclick = function (){
             addTotable(document.getElementById('super-table'), document.querySelector('select'))
-        }
 
     }
 

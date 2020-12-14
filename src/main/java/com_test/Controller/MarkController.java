@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 @Controller
 public class MarkController {
@@ -48,6 +50,26 @@ public class MarkController {
 //        model.addAttribute("marks", markList);
 //        return "marks/marks";
 //    }
+
+    @RequestMapping("/viewCourseReport")
+    public String getReportCourse(@RequestParam(value = "courseid") int courseid, Model model){
+
+        List<Mark> marks = service.filterMarksCustom(Mark->Mark.getCourseid()==courseid);
+        Mark min = marks.stream().min(new Comparator<Mark>() {
+            @Override
+            public int compare(Mark o1, Mark o2) {
+                return Double.compare(o1.getMark(), o2.getMark());
+            }
+        }).get();
+        model.addAttribute("min_mark", min);
+        model.addAttribute("min_client", service.getClientById(min.getClientid()));
+        model.addAttribute("min_course", service.getCourseById(min.getCourseid()));
+        return "marks/reports/course";
+    }
+    @RequestMapping("/viewCourseClientReport")
+    public String getReportClient(@RequestParam(value = "courseid") int courseid){
+        return "";
+    }
 
     @RequestMapping("/viewCourse")
     public String getMarks2(Model model, @RequestParam(value = "courseid", required = true) int courseid,
@@ -92,6 +114,10 @@ public class MarkController {
                               @RequestParam("clientid_") Integer clientid, Model model ) {
         System.out.println(actionResult);
 
+        Client client = service.getClientById(clientid);
+        Course course = service.getCourseById(courseid);
+        model.addAttribute("client", client);
+        model.addAttribute("course", course);
 
         if (marks.getMarks() != null) {
             for (Mark mark0 : marks.getMarks()) {
@@ -109,10 +135,7 @@ public class MarkController {
             marknew.setCourseid(courseid);
             service.SaveMark(marknew);
 
-            Client client = service.getClientById(clientid);
-            Course course = service.getCourseById(courseid);
-            model.addAttribute("client", client);
-            model.addAttribute("course", course);
+
 
             List<Mark> marks2 = service.filterMarksCustom(Mark3 -> {
                 return Mark3.getClientid() == clientid && Mark3.getCourseid() == courseid;
@@ -121,6 +144,7 @@ public class MarkController {
             MarkContainer container = new MarkContainer();
             container.setMarks(marks2);
             model.addAttribute("marks", container);
+
 
 
             return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;

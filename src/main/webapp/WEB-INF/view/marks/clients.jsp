@@ -45,16 +45,22 @@
                 <c:param name="clientid" value="${client.id}"/>
                 <c:param name="courseid" value="${courseid}"/>
             </c:url>
+
+            <c:url var="viewReport" value="/viewCourseReport">
+                <c:param name="courseid" value="${courseid}"/>
+            </c:url>
+
             <c:url var="deleteButton" value="/deleteClient">
                 <c:param name="client_id" value="${client.id}"/>
             </c:url>
+
             <tr class="elements">
                 <td>${client.name}</td>
                 <td>${client.birthday}</td>
                 <th>
                         <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                     <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewButton}'">View marks</button>
-
+                    <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewReport}'">Reports</button>
                 </th>
             </tr>
         </c:forEach>

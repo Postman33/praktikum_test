@@ -41,8 +41,8 @@ public class CourseController {
             course2.setName(course.getName());
             course2.setDescription(course.getDescription());
             course2.setPrice(course.getPrice());
+            course2.getClients().clear();
             if (id != null) {
-                course2.setClients(new HashSet<>());
                 for (Integer i : id) {
                     Client client = service.getClientById(i);
                     if (!course2.getClients().contains(client))
