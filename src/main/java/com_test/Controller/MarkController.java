@@ -5,16 +5,14 @@ import com_test.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 
 @Controller
@@ -64,6 +62,32 @@ public class MarkController {
         model.addAttribute("min_mark", min);
         model.addAttribute("min_client", service.getClientById(min.getClientid()));
         model.addAttribute("min_course", service.getCourseById(min.getCourseid()));
+
+        Set<Client> clients = service.getCourseById(courseid).getClients();
+        int k = 0;
+        Double global_mark = 0d;
+        Map<Client,Double> avgPoints = new HashMap<>();
+        for( Client client : clients) {
+            Double avg_mark = 0d;
+            int j = 0;
+            List<Mark> client_marks = client.getMarks();
+
+                for(Mark cm : client_marks){
+                    avg_mark+=cm.getMark();
+                    global_mark+=cm.getMark();
+                    j++;
+                    k++;
+                }
+                avg_mark /= j;
+            avgPoints.put(client,avg_mark);
+        }
+        global_mark/=k;
+
+        model.addAttribute("avg_points",avgPoints);
+        model.addAttribute("clients",clients);
+        model.addAttribute("global_mark",global_mark);
+
+        model.addAttribute("max_param",Math.min(100,100/(global_mark- min.getMark())));
         return "marks/reports/course";
     }
     @RequestMapping("/viewCourseClientReport")
@@ -111,7 +135,13 @@ public class MarkController {
                               @RequestParam("Header_") String header,
                               @RequestParam("Mark_") Double Mark,
                               @RequestParam("Date_") Date date, @RequestParam("courseid_") Integer courseid,
-                              @RequestParam("clientid_") Integer clientid, Model model ) {
+                              @RequestParam("clientid_") Integer clientid, Model model, BindingResult result) {
+
+//        if (result.hasErrors()){
+//            return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;
+//        }
+
+
         System.out.println(actionResult);
 
         Client client = service.getClientById(clientid);

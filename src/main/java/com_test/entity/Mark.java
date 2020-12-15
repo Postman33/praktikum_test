@@ -1,6 +1,7 @@
 package com_test.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ public class Mark {
     @Column(name = "Date_offset")
     private Date date;
 
+    @Min(value = 0, message = "Оценка не может быть отрицательной!")
     @Column(name = "Mark")
     private double mark;
 
