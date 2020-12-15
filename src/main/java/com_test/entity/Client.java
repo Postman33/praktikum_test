@@ -40,7 +40,7 @@ public class Client {
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER, mappedBy = "clients")
 
     //@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
-   // @OnDelete(action = OnDeleteAction.NO_ACTION)
+    // @OnDelete(action = OnDeleteAction.NO_ACTION)
 
     private Set<Course> courses = new HashSet<>();
 

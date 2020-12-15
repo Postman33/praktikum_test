@@ -59,6 +59,7 @@ public class MarkController {
                 return Double.compare(o1.getMark(), o2.getMark());
             }
         }).get();
+
         model.addAttribute("min_mark", min);
         model.addAttribute("min_client", service.getClientById(min.getClientid()));
         model.addAttribute("min_course", service.getCourseById(min.getCourseid()));
@@ -73,6 +74,7 @@ public class MarkController {
             List<Mark> client_marks = client.getMarks();
 
                 for(Mark cm : client_marks){
+                    if( cm.getCourseid() != courseid) continue;
                     avg_mark+=cm.getMark();
                     global_mark+=cm.getMark();
                     j++;
@@ -83,11 +85,46 @@ public class MarkController {
         }
         global_mark/=k;
 
+
+        HashMap<Date,Double> averageMarks = new HashMap<>();
+        HashMap<Date,Integer> averageCountMarks = new HashMap<>();
+        for( Mark m : marks) {
+            if( m.getCourseid() != courseid) continue;
+
+            if (averageMarks.get(m.getDate())==null){
+                averageMarks.put(m.getDate(),m.getMark());
+                averageCountMarks.put(m.getDate(),1);
+            } else {
+                averageMarks.put(m.getDate(),averageMarks.get(m.getDate())+ m.getMark());
+                averageCountMarks.put(m.getDate(),averageCountMarks.get(m.getDate())+1);
+            }
+
+        }
+
+        Map<Date,Double> averageMarksForDate = new TreeMap<>();
+        int count = 0;
+        Double sum_point_course = 0d;
+        for( Map.Entry<Date,Double> entry : averageMarks.entrySet()){
+            count++;
+            sum_point_course = sum_point_course + entry.getValue()/averageCountMarks.get(entry.getKey());
+
+            averageMarksForDate.put(entry.getKey(),sum_point_course / count);
+
+        }
+
+
+
+
+
+
+
+        model.addAttribute("course_marks_for_dates",averageMarksForDate);
+
         model.addAttribute("avg_points",avgPoints);
         model.addAttribute("clients",clients);
-        model.addAttribute("global_mark",global_mark);
+        model.addAttribute("global_mark",Math.max(0,global_mark));
 
-        model.addAttribute("max_param",Math.min(100,100/(global_mark- min.getMark())));
+        model.addAttribute("max_param",Math.max(0,Math.min(100,100/(global_mark- min.getMark()))));
         return "marks/reports/course";
     }
     @RequestMapping("/viewCourseClientReport")

@@ -16,37 +16,35 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-    // Load the Visualization API and the corechart package.
-    // google.charts.load('current', {'packages':['corechart']});
-    //
-    // // Set a callback to run when the Google Visualization API is loaded.
-    // google.charts.setOnLoadCallback(drawChart);
-    //
-    // // Callback that creates and populates a data table,
-    // // instantiates the pie chart, passes in the data and
-    // // draws it.
-    // function drawChart() {
-    //     // Create the data table.
-    //     var data = new google.visualization.DataTable();
-    //     data.addColumn('string', 'Topping');
-    //     data.addColumn('number', 'Slices');
-    //     data.addRows([
-    //         ['Mushrooms', 3],
-    //         ['Onions', 1],
-    //         ['Olives', 1],
-    //         ['Zucchini', 1],
-    //         ['Pepperoni', 2]
-    //     ]);
-    //
-    //     // Set chart options
-    //     var options = {'title':'How Much Pizza I Ate Last Night',
-    //         'width':400,
-    //         'height':300};
-    //
-    //     // Instantiate and draw our chart, passing in some options.
-    //     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    //     chart.draw(data, options);
-    // }
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic2);
+
+    function drawBasic2() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'date');
+        data.addColumn('number', 'average point');
+
+        data.addRows([
+            <c:forEach var="e" items="${course_marks_for_dates}">
+            ['${e.key.toString()}',${e.value} ],
+            </c:forEach>
+        ]);
+
+        var options = {
+            hAxis: {
+                title: 'Дата'
+            },
+            vAxis: {
+                title: 'Средняя оценка'
+            },
+            height:600
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
+
+        chart.draw(data, options);
+    }
 
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawBasic);
@@ -111,16 +109,15 @@
 </script>
 
 <body>
-    ${min_client.name} имеет низкую оценку по курсу ${min_course.name} с данными
 
-    Header ${min_mark.header}
-    Mark ${min_mark.mark}
 
     <div id="chart_div"></div>
     <div>
-        <div id="chart_div2" style="width: 40%; margin-left: 55%"></div>
+        <div id="chart_div2" style="width: 40%; margin-left: 45%"></div>
 
     </div>
+
+    <div id="chart_div3"></div>
 
 </body>
 
