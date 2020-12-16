@@ -56,6 +56,8 @@ public class MainController {
 
     @RequestMapping("/deleteClient")
     public String deleteClient(@RequestParam("client_id") int id, Model model) {
+
+
        service.deleteClient( id );
 
         return "redirect:/clients";

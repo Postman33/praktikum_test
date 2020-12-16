@@ -35,6 +35,9 @@
                 <c:url var="deleteButton" value="/deleteCourse">
                     <c:param name="courseid" value="${course.id}"/>
                 </c:url>
+                <c:url var="viewReport" value="/viewCourseReport">
+                    <c:param name="courseid" value="${course.id}"/>
+                </c:url>
                 <tr>
                     <td>${course.name}</td>
                     <td>${course.price}</td>
@@ -42,6 +45,7 @@
 
                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                         <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewButton}'">View marks</button>
+                        <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewReport}'">Reports</button>
 
                     </th>
                 </tr>

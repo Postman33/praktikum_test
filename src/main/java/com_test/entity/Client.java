@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -36,16 +37,19 @@ public class Client {
     @Column(name = "Birthday")
     private Date Birthday;
 
-    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER, mappedBy = "clients")
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER, mappedBy = "clients")
 
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
-   // @OnDelete(action = OnDeleteAction.NO_ACTION)
+    //@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.REFRESH, org.hibernate.annotations.CascadeType.MERGE})
+    // @OnDelete(action = OnDeleteAction.NO_ACTION)
+
     private Set<Course> courses = new HashSet<>();
 
 
 
 
-
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "ClientID", updatable = false, nullable = true)
+    private List<Mark> marks = new ArrayList<>();
 
 
     public Client(String name, Date birthday) {
@@ -104,6 +108,14 @@ public class Client {
     public void removeCourse(Course course){
         if (courses==null) courses=new HashSet<>();
         courses.remove(course);
+    }
+
+    public List<Mark> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Mark> marks) {
+        this.marks = marks;
     }
 
     @Override

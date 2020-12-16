@@ -40,7 +40,6 @@
                 <td>${course.price}</td>
                 <th>
 
-
                     <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                         <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">View</button>
                     <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>

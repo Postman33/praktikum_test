@@ -1,6 +1,7 @@
 package com_test.dao;
 
 import com_test.entity.Client;
+import com_test.entity.Course;
 import com_test.entity.Mark;
 import com_test.entity.MarkKey;
 import org.hibernate.Session;
@@ -50,12 +51,14 @@ public class MarkDAO implements IMarkDAO{
     }
 
     @Override
-    public Mark getMarkByID(MarkKey id) {
+    public Mark getMarkByID(int id) {
         return null;
     }
 
     @Override
-    public void deleteMark(MarkKey id) {
-
+    public void deleteMark(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Mark mark=    session.createQuery("from Mark where id = :et",Mark.class).setParameter("et",id).getSingleResult();
+        session.delete(mark);
     }
 }
