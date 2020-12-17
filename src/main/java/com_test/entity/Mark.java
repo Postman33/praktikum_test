@@ -1,7 +1,11 @@
 package com_test.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -14,11 +18,12 @@ public class Mark {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @NotNull
     @Column(name = "Date_offset")
     private Date date;
 
     @Min(value = 0, message = "Оценка не может быть отрицательной!")
+    @Max(value = 100, message = "Оценка не может иметь балл выше 100!")
     @Column(name = "Mark")
     private double mark;
 

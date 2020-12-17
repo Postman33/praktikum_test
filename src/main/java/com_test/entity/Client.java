@@ -7,10 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.*;
@@ -18,8 +15,6 @@ import java.util.*;
 @Entity
 @Table(name="client")
 public class Client {
-
-
 
     @Column(name = "ClientID")
     @Id
@@ -33,7 +28,7 @@ public class Client {
     private String name;
 
 
-
+    @NotNull(message = "Не может быть пустым")
     @Column(name = "Birthday")
     private Date Birthday;
 

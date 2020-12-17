@@ -32,11 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
-        http.authorizeRequests().antMatchers("/").hasAnyRole("Emp")
-                .antMatchers("/hr").hasRole("te")
-                .and().formLogin().permitAll();
-
-
+        http.authorizeRequests().antMatchers("/*").hasAnyRole("ADMIN").and().formLogin();
     }
 
     @Override

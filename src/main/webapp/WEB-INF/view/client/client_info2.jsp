@@ -39,6 +39,7 @@
                 <div class="form-group">
                     <label for="dateBirthday" class="control-label">Дата рождения</label>
                     <form:input path="birthday" type="date" class="form-control" id="dateBirthday" placeholder="Email"  />
+                    <form:errors path="birthday"/>
                     <div class="help-block with-errors"></div>
                 </div>
 

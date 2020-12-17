@@ -110,6 +110,14 @@
 
 <body>
 
+<c:url var="ToCourse" value="/viewCourse">
+    <c:param name="courseid" value="${courseid}"/>
+</c:url>
+
+<button type="button" class="btn btn-danger" style="font-size: 16px;"
+        onclick="window.location.href='${ToCourse}'">Назад к курсу
+</button>
+
 
     <div id="chart_div"></div>
     <div>
@@ -121,5 +129,5 @@
 
 </body>
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 </html>
