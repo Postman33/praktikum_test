@@ -1,0 +1,36 @@
+
+
+.hshs {
+    color: red !important;
+}
+
+.btn.button-bottom-crud {
+    margin-top: 30px;
+
+    font-size: 25px;
+    width: 40%;
+    margin-left: 49%;
+}
+.button-green {
+    background-color: #51cc4d;
+    border: 1px solid #ecd3d3;
+    color: #ffffff;
+    font-size:25px !important;
+    border-radius: 13px;
+    margin-left:75%;
+    margin-top: 10px;
+    text-align: center;
+    width: 125px;
+}
+label {
+    cursor: pointer;
+    color: #4c60a9;
+    font-size: 20px;
+    padding: 10px;
+    margin: 1px;
+}
+
+tr.paint-row:nth-child(n) {background-color: #c2dfe4 !important;}
+tr.paint-row:nth-child(2n) {background-color: #bedcb7 !important;}
+thead tr.header {background-color: #246796 !important;}
+thead .header{ color: white; }

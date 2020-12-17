@@ -20,14 +20,17 @@
     <title>Title</title>
 </head>
 <body>
+
 <div class="container" >
-    <h2>Teachers</h2>
-    <input type="text" value="Add"/>
-    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
-    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+    <h1 style="text-align: center;">Courses</h1>
+    <label for="value">Введите ФИО учителя:</label>
+    <input  id='value' type="text" value=""/>
+</div>
+
+<div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
     <table  class="table table-striped table-bordered" >
         <thead>
-        <tr>
+        <tr class="header">
             <th>FIO</th>
             <th>Birthday</th>
             <th>Operations</th>
@@ -43,7 +46,7 @@
             <c:url var="deleteButton" value="/deleteTeacher">
                 <c:param name="teacher_id" value="${person.id}"/>
             </c:url>
-            <tr>
+            <tr class="elements paint-row">
                 <td>${person.name}</td>
                 <td>${person.birthday}</td>
                 <th>
@@ -55,43 +58,18 @@
                 </th>
             </tr>
         </c:forEach>
-        <tr class="success">
-            <td class="hrrr">Success</td>
-            <td>Doe</td>
-            <td>-</td>
-        </tr>
-        <tr class="danger">
-            <td>Danger</td>
-            <td>Moe</td>
-            <td>-</td>
-
-        </tr>
-        <tr class="info">
-            <td>Info</td>
-            <td>Dooley</td>
-            <td>-</td>
-        </tr>
-        <tr class="warning">
-            <td>Warning</td>
-            <td>Refs</td>
-            <td>-</td>
-        </tr>
-        <tr class="active">
-            <td>Active</td>
-            <td>Activeson</td>
-            <td>-</td>
-        </tr>
         </tbody>
     </table>
 </div>
-    <button class="btn  button-bottom-crud btn-info btn-block text-light " type="submit" onclick="window.location.href='/addTeacher'">Add</button>
-
+    <button class="button-green" type="submit" onclick="window.location.href='/addTeacher'">Add</button>
 </div>
-<input type="button" value="Add" onclick="window.location.href='/addTeacher'" style="margin-left: 30%"/>
+
 </body>
+<script type="text/javascript">
+    <%@include file="/resources/scripts/script.js"%>
+</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
-<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css" type="text/css">--%>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">

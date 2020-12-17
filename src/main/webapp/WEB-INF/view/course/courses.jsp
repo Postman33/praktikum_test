@@ -12,14 +12,16 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container" >
+<h1 style="text-align: center;">Courses</h1>
+<label for="value">Введите название курса:</label>
+<input  id='value' type="text" value=""/>
+</div>
 <div class="container">
-    <h2>Courses</h2>
-    <input type="text" value="Add"/>
-    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
-    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+    <div class="container" style="margin-top: 10px; max-height: 500px; overflow: scroll;">
     <table  class="table table-striped table-bordered">
         <thead>
-        <tr>
+        <tr class="header">
             <th>CourseName</th>
             <th>Price</th>
             <th>Operations</th>
@@ -35,7 +37,7 @@
             <c:url var="deleteButton" value="/deleteCourse">
                 <c:param name="course_id" value="${course.id}"/>
             </c:url>
-            <tr>
+            <tr class="elements paint-row">
                 <td>${course.name}</td>
                 <td>${course.price}</td>
                 <th>
@@ -46,44 +48,21 @@
                 </th>
             </tr>
         </c:forEach>
-        <tr class="success">
-            <td>Success</td>
-            <td>Doe</td>
-            <td>-</td>
-        </tr>
-        <tr class="danger">
-            <td>Danger</td>
-            <td>Moe</td>
-            <td>-</td>
-
-        </tr>
-        <tr class="info">
-            <td>Info</td>
-            <td>Dooley</td>
-            <td>-</td>
-        </tr>
-        <tr class="warning">
-            <td>Warning</td>
-            <td>Refs</td>
-            <td>-</td>
-        </tr>
-        <tr class="active">
-            <td>Active</td>
-            <td>Activeson</td>
-            <td>-</td>
-        </tr>
         </tbody>
     </table>
 </div>
 <div>
 
 </div>
-    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addCourse'">Add</button>
-
+<%--    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addCourse'">Add</button>--%>
+    <button class="button-green"  type="submit" onclick="window.location.href='/addCourse'">Add</button>
 </div>
-<input type="button" value="Add" onclick="window.location.href='/addCourse'" style="margin-left: 30%"/>
+
 </body>
-<link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
+<script type="text/javascript">
+    <%@include file="/resources/scripts/script.js"%>
+</script>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

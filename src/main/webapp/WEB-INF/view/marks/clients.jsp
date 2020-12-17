@@ -22,16 +22,13 @@
             onclick="window.location.href='${ToCourses}'">Назад к курсам
     </button>
 
-    <h2>Введите ФИО клиента:</h2>
-    <input  id='value' type="text" value=""/>
-    <input id='search' type="button" value="Найти" style="margin-left:5%">
-    <input id='showAll' type="button" value="Показать всех" style="margin-left:5%">
-    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+    <label for="value">Введите ФИО клиента:</label>
+    <input id='value' type="text" value=""/>
 </div>
-    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
-    <table  class="table table-striped table-bordered">
+<div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+    <table class="table table-striped table-bordered">
         <thead>
-        <tr>
+        <tr class="header">
             <th>FIO</th>
             <th>Birthday</th>
             <th>Operations</th>
@@ -54,13 +51,17 @@
                 <c:param name="client_id" value="${client.id}"/>
             </c:url>
 
-            <tr class="elements">
+            <tr class="elements paint-row">
                 <td>${client.name}</td>
                 <td>${client.birthday}</td>
                 <th>
                         <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                    <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewButton}'">View marks</button>
-                    <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;" onclick="window.location.href='${viewReport}'">Reports</button>
+                    <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;"
+                            onclick="window.location.href='${viewButton}'">View marks
+                    </button>
+                    <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;"
+                            onclick="window.location.href='${viewReport}'">Reports
+                    </button>
                 </th>
             </tr>
         </c:forEach>
@@ -69,16 +70,20 @@
     </table>
 </div>
 <div>
-
 </div>
-<input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
+
 </body>
 <script type="text/javascript">
     <%@include file="/resources/scripts/script.js"%>
 </script>
+
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 </html>
