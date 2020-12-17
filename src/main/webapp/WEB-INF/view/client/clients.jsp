@@ -58,7 +58,7 @@
 <input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
 </body>
 <script type="text/javascript">
-    <%@include file="/WEB-INF/scripts/script.js"%>
+    <%@include file="/resources/scripts/script.js"%>
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
