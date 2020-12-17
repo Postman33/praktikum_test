@@ -50,32 +50,6 @@
                     </th>
                 </tr>
             </c:forEach>
-            <tr class="success">
-                <td>Success</td>
-                <td>Doe</td>
-                <td>-</td>
-            </tr>
-            <tr class="danger">
-                <td>Danger</td>
-                <td>Moe</td>
-                <td>-</td>
-
-            </tr>
-            <tr class="info">
-                <td>Info</td>
-                <td>Dooley</td>
-                <td>-</td>
-            </tr>
-            <tr class="warning">
-                <td>Warning</td>
-                <td>Refs</td>
-                <td>-</td>
-            </tr>
-            <tr class="active">
-                <td>Active</td>
-                <td>Activeson</td>
-                <td>-</td>
-            </tr>
             </tbody>
         </table>
     </div>

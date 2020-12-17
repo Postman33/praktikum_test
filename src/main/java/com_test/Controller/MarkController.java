@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.*;
@@ -115,7 +117,7 @@ public class MarkController {
 
 
 
-
+        model.addAttribute("courseid",courseid);
 
 
         model.addAttribute("course_marks_for_dates",averageMarksForDate);
@@ -168,7 +170,7 @@ public class MarkController {
     }
 
     @RequestMapping("/updateMark")
-    public String saveTeacher(@ModelAttribute("marks") MarkContainer marks, @RequestParam("action") String actionResult,
+    public String saveTeacher(@Validated @ModelAttribute("marks") MarkContainer marks, @RequestParam("action") String actionResult,
                               @RequestParam("Header_") String header,
                               @RequestParam("Mark_") Double Mark,
                               @RequestParam("Date_") Date date, @RequestParam("courseid_") Integer courseid,
@@ -176,8 +178,11 @@ public class MarkController {
 
 //        if (result.hasErrors()){
 //            return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;
-//        }
+//        }r
 
+    if (result.hasErrors()) {
+        return "redirect:/viewCourse?courseid="+courseid + "&clientid="+clientid;
+    }
 
         System.out.println(actionResult);
 

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center;">Оценки за курс {${course.name}} клиента {${client.name}} </h1>
+    <h1 style="text-align: center;">Оценки за курс <i>${course.name}</i> клиента <i>${client.name}</i> </h1>
     <c:url var="ToCourse" value="/viewCourse">
         <c:param name="courseid" value="${course.id}"/>
     </c:url>
@@ -51,7 +51,9 @@
 
             <tr class="elements">
                 <td><input name="marks[${i.index}].header" type="text" value="${mark.header}"></td>
-                <td><input min="0" max="100" name="marks[${i.index}].mark" type="number" value="${mark.mark}"></td>
+                <td><input min="0" max="100" name="marks[${i.index}].mark" type="number" value="${mark.mark}" onchange="">
+
+                </td>
                 <td><input name="marks[${i.index}].date" type="date" value="${mark.date}">
                     <input type="hidden" name="marks[${i.index}].courseid" value="${mark.courseid}">
                     <input type="hidden" name="marks[${i.index}].clientid" value="${mark.clientid}">
@@ -82,8 +84,8 @@
             <tbody>
             <tr id="tab_ele" class="elements">
                 <td><input name="Header_" type="text" value="Работа"></td>
-                <td><input name="Mark_" type="number" value="0"></td>
-                <td><input name="Date_" type="date" value="2020-12-12">
+                <td><input name="Mark_" min="0" max="100" type="number" value="0"> <c:if test="${mark_errors==1}">Оценка от 0 до 100!</c:if></td>
+                <td><input name="Date_"  type="date" value="2020-12-12">
                     <input type="hidden" name="courseid_" value="${course.id}">
                     <input type="hidden" name="clientid_" value="${client.id}">
                 </td>
@@ -186,4 +188,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>" type="text/css">
 </html>
