@@ -15,8 +15,7 @@
 <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
     <h1>Clients</h1>
     <h2>Введите ФИО клиента:</h2>
-    <input  id='value' type="text" value=""/>
-    <input id='search' type="button" value="Найти" style="margin-left:5%">
+    <input id='value' type="text" value=""/>
     <input id='showAll' type="button" value="Показать всех" style="margin-left:5%">
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
     <table  class="table table-striped table-bordered">

@@ -107,7 +107,6 @@
     }
     function add(tab_elements,table_ser){
         const rowCount = table_ser.rows.length;
-
         var element1 = document.createElement("input");
         element1.value=tab_elements[3].value
         element1.name='marks['+rowCount+'].header'
