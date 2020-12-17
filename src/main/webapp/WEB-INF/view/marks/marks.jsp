@@ -117,6 +117,9 @@
 
 </body>
 <script type="text/javascript">
+    <%@include file="/resources/scripts/script_for_color.js"%>
+</script>
+<script type="text/javascript">
     const tab_elements = document.querySelector('#tab_ele input')
     const table_ser = document.getElementById('tab_ser')
     const add_but = document.getElementById('add_but')
