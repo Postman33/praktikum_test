@@ -30,7 +30,7 @@ label {
     margin: 1px;
 }
 
-tr.paint-row:nth-child(n) {background-color: #c2dfe4 !important;}
-tr.paint-row:nth-child(2n) {background-color: #bedcb7 !important;}
+tr.paint-row:nth-child(n) {background-color: #f0fdff !important;}
+tr.paint-row:nth-child(2n) {background-color: #e6ece7 !important;}
 thead tr.header {background-color: #246796 !important;}
 thead .header{ color: white; }

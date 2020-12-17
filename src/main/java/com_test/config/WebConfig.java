@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
 import java.nio.charset.Charset;
 
@@ -17,7 +18,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
+                .addResourceLocations("/resources/")
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());;
     }
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
