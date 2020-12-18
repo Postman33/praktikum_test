@@ -12,15 +12,15 @@
     <title>Клиенты</title>
 </head>
 <body>
-<div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
-    <h1>Clients</h1>
-    <h2>Введите ФИО клиента:</h2>
-    <input id='value' type="text" value=""/>
-    <input id='showAll' type="button" value="Показать всех" style="margin-left:5%">
-    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
-    <table  class="table table-striped table-bordered">
+<div class="container" >
+    <h1 style="text-align: center;">Клиенты</h1>
+    <label for="value">Введите ФИО клиента:</label>
+    <input  id='value' type="text" value=""/>
+</div>
+    <div class="container" style="margin-top: 10px; max-height: 500px; overflow: scroll;">
+       <table  class="table table-striped table-bordered">
         <thead>
-        <tr>
+        <tr class="header">
             <th>FIO</th>
             <th>Birthday</th>
             <th>Operations</th>
@@ -36,7 +36,7 @@
             <c:url var="deleteButton" value="/deleteClient">
                 <c:param name="client_id" value="${person.id}"/>
             </c:url>
-            <tr class="elements">
+            <tr class="elements paint-row">
                 <td>${person.name}</td>
                 <td>${person.birthday}</td>
                 <th>
@@ -51,14 +51,15 @@
     </table>
 </div>
 <div>
-    <button class="btn btn-info btn-block text-light" style="margin-left:15%; font-size: 20px; width: 70%"  type="submit" onclick="window.location.href='/addClient'">Add</button>
+    <button class="button-green"  type="submit" onclick="window.location.href='/addClient'">Add</button>
 
 </div>
-<input type="button" value="Add" onclick="window.location.href='/addClient'" style="margin-left: 30%"/>
+
 </body>
 <script type="text/javascript">
     <%@include file="/resources/scripts/script.js"%>
 </script>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

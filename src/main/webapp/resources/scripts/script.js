@@ -11,13 +11,10 @@ console.dir(elements)
 condition.oninput=()=>{
     const str=this.value.value.toLowerCase();
     console.log(str)
-    if(str!=''){
+    Show_all(table, elements)
+    if(str!=='') {
         Search_for_template(table,elements,str)
     }
-    else{
-        Show_all(table,elements)
-    }
-
 }
 
 search.onclick=()=>{

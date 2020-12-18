@@ -24,7 +24,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String getInfoForAllEmps(){
-       return "view_for_all_emp" ;
+       return "redirect:/clients" ;
     }
 
     @RequestMapping("/clients")

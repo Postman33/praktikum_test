@@ -34,6 +34,7 @@ public class Mark {
     @Column(name = "CourseID")
     private int courseid;
 
+
     @Column(name = "Header")
     private String header;
 
