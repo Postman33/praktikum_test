@@ -6,7 +6,7 @@
   Time: 0:45
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
 
@@ -109,6 +109,10 @@
 </script>
 
 <body>
+<%@include file="/resources/view_library/header.jsp"%>
+
+
+<div class="container">
 
 <c:url var="ToCourse" value="/viewCourse">
     <c:param name="courseid" value="${courseid}"/>
@@ -117,7 +121,7 @@
 <button type="button" class="btn btn-danger" style="font-size: 16px;"
         onclick="window.location.href='${ToCourse}'">Назад к курсу
 </button>
-
+</div>
 
     <div id="chart_div"></div>
     <div>
@@ -129,5 +133,9 @@
 
 </body>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </html>

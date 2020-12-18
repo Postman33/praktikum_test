@@ -33,7 +33,7 @@ public class Course {
     private Set<Teacher> teachers;
 
 
-    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinTable(name = "course_client",
             joinColumns = {
                     @JoinColumn(name = "coursesid")},

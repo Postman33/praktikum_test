@@ -17,11 +17,12 @@
 <br>
 <br>
 <div class="container">
+    <form:form modelAttribute="course_info" action="/saveCourse" method="post">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-3 center">
+            <h1 style="text-align: center;">Курс</h1>
 
 
-            <form:form modelAttribute="course_info" action="/saveCourse" method="post">
                 <input type="hidden" name="exists" value="${exists}">
                 <form:hidden path="id"/>
 
@@ -54,12 +55,18 @@
                     <form:input path="price" type="number" class="form-control" id="dateBirthday" placeholder="0"  />
                     <div class="help-block with-errors"></div>
                 </div>
+        </div>
 
-                <div class="container" style="margin-left: -50%;">
-                    <h2>Clients</h2>
-                    <input type="text" value="Add"/>
-                    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
-                    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+    </div>
+    <div class="row">
+
+                        <div class="col-md-8 col-md-offset-3 center" style="margin-top: 350px;">
+                            <div class="container" >
+                                <h1 style="text-align: center;">Клиенты</h1>
+                                <label for="value">Введите ФИО клиента:</label>
+                                <input  id='value' type="text" value=""/>
+                            </div>
+                            <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
                         <table id="super-table"  class="table table-striped table-bordered">
                             <thead>
                             <tr>
@@ -78,7 +85,7 @@
                                 <c:url var="deleteButton" value="/deleteClient">
                                     <c:param name="client_id" value="${person.id}"/>
                                 </c:url>
-                                <tr>
+                                <tr class="elements">
                                     <td><%--<input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> --%>${person.name}</td>
                                     <td>${person.birthday}
                                     <input type="hidden" name="id2" value="${person.id}"> </td>
@@ -94,31 +101,40 @@
                     <div>
 
                     </div>
+
+                            <div class="form-group">
+                                <div class="center"></div>
+                                <select id="elementId">
+                                    <c:forEach var="client" items="${all_clients}">
+                                        <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
+                                    </c:forEach>
+                                </select>
+                                <input  id="testbut" type="button" value="Добавить">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-info center" type="submit" value="OK">
+                            </div>
+
+                            </div>
+
+
 <%--                    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="addRow('super-table')">Add</button>--%>
                 </div>
 
 
 
 
-                <div class="form-group">
-                    <select id="elementId">
-                        <c:forEach var="client" items="${all_clients}">
-                            <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
-                        </c:forEach>
-                    </select>
-                    <input  id="testbut" type="button" value="Test">
-                </div>
-
-                <div class="form-group">
-                    <input class="btn btn-info" type="submit" value="OK">
-                </div>
 
 
 
-            </form:form>
 
-        </div>
-    </div>
+
+
+
+
+</div>
+</form:form>
 </div>
 <script>
 
@@ -166,11 +182,11 @@
         const clients = document.querySelector('select')
 
 
-        const testbut = document.getElementById('testbut')
-        const table = document.getElementById('super-table')
+        const testbut2s = document.getElementById('testbut')
+        const table2d = document.getElementById('super-table')
 
 
-        testbut.onclick = function (){
+        testbut2s.onclick = function (){
             addTotable(document.getElementById('super-table'), document.querySelector('select'))
 
     }
@@ -180,10 +196,12 @@
 
 </body>
 <script type="text/javascript">
-<%--    <%@include file="/resources/scripts/script_for_course_info.js"%>--%>
+    <%@include file="/resources/scripts/script.js"%>
 </script>
-
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
