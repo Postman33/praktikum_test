@@ -14,12 +14,12 @@
 <body>
 <%@include file="/resources/view_library/header.jsp"%>
 <div class="container">
-    <h1 style="text-align: center;">Курсы</h1>
+    <h1 style="text-align: center;">Оценки - курсы</h1>
     <label for="value">Введите название курса:</label>
     <input id='value' type="text" value=""/>
 </div>
 <div class="container">
-    <div class="container" style="margin-top: 20px; max-height: 500px; overflow: scroll;">
+    <div class="container" style="margin-top: 10px; max-height: 500px; overflow: scroll;">
         <table class="table table-striped table-bordered">
             <thead>
             <tr class="header">
@@ -66,6 +66,8 @@
 
 </div>
 <%--<input type="button" value="Add" onclick="window.location.href='/addCourse'" style="margin-left: 30%"/>--%>
+<%@include file="/resources/view_library/footer.jsp"%>
+
 </body>
 <script type="text/javascript">
     <%@include file="/resources/scripts/script.js"%>

@@ -10,7 +10,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Курс - ${course.name}</title>
+    <title>Оценки - курс <i>${course.name}</i></title>
 </head>
 <body>
 <%@include file="/resources/view_library/header.jsp"%>
@@ -72,6 +72,7 @@
 </div>
 <div>
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
 
 </body>
 <script type="text/javascript">

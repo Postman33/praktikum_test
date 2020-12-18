@@ -58,6 +58,7 @@
 <%--    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addCourse'">Add</button>--%>
     <button class="button-green"  type="submit" onclick="window.location.href='/addCourse'">Add</button>
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
 
 </body>
 <script type="text/javascript">

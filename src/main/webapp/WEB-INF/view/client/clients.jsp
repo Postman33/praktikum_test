@@ -56,6 +56,8 @@
     <button class="button-green"  type="submit" onclick="window.location.href='/addClient'">Add</button>
 
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
+
 
 </body>
 <script type="text/javascript">

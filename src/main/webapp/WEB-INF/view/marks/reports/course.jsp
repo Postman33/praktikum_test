@@ -130,6 +130,7 @@
     </div>
 
     <div id="chart_div3"></div>
+<%@include file="/resources/view_library/footer.jsp"%>
 
 </body>
 

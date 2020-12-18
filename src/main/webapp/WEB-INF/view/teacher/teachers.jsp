@@ -28,7 +28,7 @@
     <input  id='value' type="text" value=""/>
 </div>
 
-<div class="container" style="margin-top: 20px; max-height: 500px; overflow: scroll;">
+<div class="container" style="margin-top: 10px; max-height: 500px; overflow: scroll;">
     <table  class="table table-striped table-bordered" >
         <thead>
         <tr class="header">
@@ -64,6 +64,7 @@
 </div>
     <button class="button-green" type="submit" onclick="window.location.href='/addTeacher'">Add</button>
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
 
 </body>
 <script type="text/javascript">

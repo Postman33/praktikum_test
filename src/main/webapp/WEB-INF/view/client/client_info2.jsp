@@ -65,6 +65,8 @@
         </div>
     </div>
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
+
 </body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">

@@ -7,14 +7,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Title</title>
 </head>
 <body>
-<br>
+<%@include file="/resources/view_library/header.jsp"%>
 <br>
 <div class="container">
     <form:form modelAttribute="course_info" action="/saveCourse" method="post">
@@ -66,7 +67,7 @@
                                 <label for="value">Введите ФИО клиента:</label>
                                 <input  id='value' type="text" value=""/>
                             </div>
-                            <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+                            <div class="container" style="margin-top: 20px; max-height: 500px; overflow: scroll;">
                         <table id="super-table"  class="table table-striped table-bordered">
                             <thead>
                             <tr>
@@ -134,6 +135,9 @@
 
 
 </div>
+<div style="margin-top:950px;">
+</div>
+<%@include file="/resources/view_library/footer.jsp"%>
 </form:form>
 </div>
 <script>
