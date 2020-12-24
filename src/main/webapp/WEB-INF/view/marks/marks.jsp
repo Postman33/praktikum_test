@@ -76,10 +76,10 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr class="header">
-                <th>Header</th>
-                <th>Mark</th>
-                <th>Date</th>
-                <th>Operations</th>
+                <th>Заголовок</th>
+                <th>Оценка</th>
+                <th>Дата</th>
+                <th>Операции</th>
             </tr>
             </thead>
             <tbody>

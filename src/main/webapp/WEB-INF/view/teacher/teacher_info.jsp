@@ -43,14 +43,6 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="terms" data-error="Прежде чем оправить данные" required>
-                            Докажите что Вы человек
-                        </label>
-                        <div class="help-block with-errors"></div>
-                    </div>
-
                 </div>
                 <div class="form-group">
                     <input type="submit" value="OK">

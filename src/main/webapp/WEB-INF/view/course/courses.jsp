@@ -22,9 +22,9 @@
     <table  class="table table-striped table-bordered">
         <thead>
         <tr class="header">
-            <th>CourseName</th>
-            <th>Price</th>
-            <th>Operations</th>
+            <th>Названия курса</th>
+            <th>Цена</th>
+            <th>Операции</th>
         </tr>
 
         </thead>
@@ -43,8 +43,11 @@
                 <th>
 
                     <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">View</button>
-                    <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
+                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Просмотреть</button>
+                    <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="
+                            const f=confirm('Вы действительно хотите удалить курс?')
+                            if(f)
+                            window.location.href = '${deleteButton}'">Удалить</button>
                 </th>
             </tr>
         </c:forEach>
@@ -55,7 +58,7 @@
 
 </div>
 <%--    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="window.location.href='/addCourse'">Add</button>--%>
-    <button class="button-green"  type="submit" onclick="window.location.href='/addCourse'">Add</button>
+    <button class="button-green"  type="submit" onclick="window.location.href='/addCourse'">Добавить</button>
 </div>
 
 </body>

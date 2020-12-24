@@ -56,16 +56,13 @@
                 </div>
 
                 <div class="container" style="margin-left: -50%;">
-                    <h2>Clients</h2>
-                    <input type="text" value="Add"/>
-                    <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
                     <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
                         <table id="super-table"  class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>FIO</th>
-                                <th>Birthday</th>
-                                <th>Operations</th>
+                                <th>ФИО</th>
+                                <th>Дата рождения</th>
+                                <th>Операции</th>
                             </tr>
 
                             </thead>
@@ -84,7 +81,9 @@
                                     <input type="hidden" name="id2" value="${person.id}"> </td>
                                     <th>
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="DeleteRow( this )">Delete</button>
+                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="const f=confirm('Вы действительно хотите удалить клиента?')
+                                                if(f)
+                                        DeleteRow( this )">Удалить</button>
                                     </th>
                                 </tr>
                             </c:forEach>
@@ -155,7 +154,7 @@
                 del_but.parentElement.closest('tr').remove()
             }
             del_but.type = "button";
-            del_but.textContent='Delete'
+            del_but.textContent='Удалить'
             cell3.appendChild(del_but)
         }
         function DeleteRow( el ){

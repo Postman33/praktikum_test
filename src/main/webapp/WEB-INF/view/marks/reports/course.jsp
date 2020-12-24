@@ -86,7 +86,6 @@
         var data = google.visualization.arrayToDataTable([
             ['Critter', 'Value'],
             ['Avg point', ${global_mark}],
-            ['Course happy,%', ${max_param}]
         ]);
 
         var options = {

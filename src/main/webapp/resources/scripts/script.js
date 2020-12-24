@@ -1,11 +1,16 @@
 const condition=document.getElementById('value')
 const search=document.getElementById('search')
 const table=document.querySelectorAll('td')
+
+const lines=document.getElementsByClassName('elements paint-row')
+
 const update_buttons=document.getElementsByClassName('btn btn-info');
 const delete_buttons=document.getElementsByClassName('btn btn-danger');
 const but_show_all=document.getElementById('showAll')
 const elements=document.getElementsByClassName('elements')
 console.dir(elements)
+
+
 
 
 condition.oninput=()=>{
@@ -17,20 +22,12 @@ condition.oninput=()=>{
     }
 }
 
-search.onclick=()=>{
-    const condit_text=condition.value.toLowerCase();
-    if(condit_text!='')
-        Search_for_template(table,elements,condit_text)
-}
-but_show_all.onclick=()=>{
-    Show_all(table,elements)
-}
 
 
 function Search_for_template(table,elements,template){
     let k=0;
     for(let i=0;i<table.length;i+=2){
-        if(table[i].innerText.toLowerCase().search(template)==-1){
+        if(table[i].innerText.toLowerCase().search(template)===-1){
             elements[k].style.display='None'
             table[i].innerHTML=table[i].innerText;
         }
@@ -52,5 +49,5 @@ function Show_all(table,elements){
 }
 
 function insertMark(str, pos,len){
-    return str.slice(0,pos)+'<mark style="background-color:yellow;>'+str.slice(pos,pos+len)+'</mark>'+str.slice(pos+len);
+    return str.slice(0,pos)+'<mark style="background-color:yellow;">'+str.slice(pos,pos+len)+'</mark>'+str.slice(pos+len);
 }

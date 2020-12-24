@@ -22,9 +22,9 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr class="header">
-                <th>CourseName</th>
-                <th>Price</th>
-                <th>Operations</th>
+                <th>Название курса</th>
+                <th>Цена</th>
+                <th>Операции</th>
             </tr>
 
             </thead>
@@ -46,10 +46,10 @@
                     <th>
                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
                         <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;"
-                                onclick="window.location.href='${viewButton}'">View marks
+                                onclick="window.location.href='${viewButton}'">Посмотреть оценки
                         </button>
                         <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;"
-                                onclick="window.location.href='${viewReport}'">Reports
+                                onclick="window.location.href='${viewReport}'">Отчёты
                         </button>
 
                     </th>

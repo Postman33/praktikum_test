@@ -21,9 +21,9 @@
        <table  class="table table-striped table-bordered">
         <thead>
         <tr class="header">
-            <th>FIO</th>
-            <th>Birthday</th>
-            <th>Operations</th>
+            <th>ФИО</th>
+            <th>Дата Рождения</th>
+            <th>Операции</th>
         </tr>
 
         </thead>
@@ -41,8 +41,11 @@
                 <td>${person.birthday}</td>
                 <th>
                     <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Update</button>
-                    <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="window.location.href='${deleteButton}'">Delete</button>
+                        <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;" onclick="window.location.href='${updateButton}'">Обновить</button>
+                    <button type="button" class="btn btn-danger" style="font-size: 16px;"  onclick=" const f=confirm('Вы действительно хотите удалить клиента?')
+                        if(f) {
+                        window.location.href = '${deleteButton}'
+                        }">Удалить</button>
                 </th>
             </tr>
         </c:forEach>
@@ -51,7 +54,7 @@
     </table>
 </div>
 <div>
-    <button class="button-green"  type="submit" onclick="window.location.href='/addClient'">Add</button>
+    <button class="button-green"  type="submit" onclick="window.location.href='/addClient'">Добавить</button>
 
 </div>
 

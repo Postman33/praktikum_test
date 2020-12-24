@@ -43,7 +43,7 @@ function addTotable(table,clients) {
         del_but.parentElement.closest('tr').remove()
     }
     del_but.type = "button";
-    del_but.textContent='Delete'
+    del_but.textContent='Удалить'
     cell3.appendChild(del_but)
 }
 function DeleteRow( el ){
