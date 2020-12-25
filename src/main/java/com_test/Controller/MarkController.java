@@ -55,7 +55,11 @@ public class MarkController {
     public String getReportCourse(@RequestParam(value = "courseid") int courseid, Model model){
 
         List<Mark> marks = service.filterMarksCustom(Mark->Mark.getCourseid()==courseid);
-        Mark min = marks.stream().min(new Comparator<Mark>() {
+        Mark min = new Mark();
+        min.setMark(0);
+        min.setHeader("null");
+        if (marks.size() != 0){
+         min = marks.stream().min(new Comparator<Mark>() {
             @Override
             public int compare(Mark o1, Mark o2) {
                 return Double.compare(o1.getMark(), o2.getMark());
@@ -65,6 +69,7 @@ public class MarkController {
         model.addAttribute("min_mark", min);
         model.addAttribute("min_client", service.getClientById(min.getClientid()));
         model.addAttribute("min_course", service.getCourseById(min.getCourseid()));
+    }
 
         Set<Client> clients = service.getCourseById(courseid).getClients();
         int k = 0;
@@ -88,7 +93,7 @@ public class MarkController {
         global_mark/=k;
 
 
-        HashMap<Date,Double> averageMarks = new HashMap<>();
+        Map<Date,Double> averageMarks = new TreeMap<>();
         HashMap<Date,Integer> averageCountMarks = new HashMap<>();
         for( Mark m : marks) {
             if( m.getCourseid() != courseid) continue;

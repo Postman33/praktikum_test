@@ -64,6 +64,7 @@
 </div>
     <button class="button-green" type="submit" onclick="window.location.href='/addTeacher'">Add</button>
 </div>
+
 <%@include file="/resources/view_library/footer.jsp"%>
 
 </body>

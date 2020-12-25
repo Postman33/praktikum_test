@@ -114,12 +114,12 @@
 
 <div class="container">
 
-<c:url var="ToCourse" value="/viewCourse">
-    <c:param name="courseid" value="${courseid}"/>
+<c:url var="ToCourse" value="/getMarks">
+
 </c:url>
 
 <button type="button" class="btn btn-danger" style="font-size: 16px;"
-        onclick="window.location.href='${ToCourse}'">Назад к курсу
+        onclick="window.location.href='${ToCourse}'">Назад к курсам
 </button>
 </div>
 

@@ -60,9 +60,9 @@
                     <button type="button" class="btn btn-info" style="font-size: 16px; color: white !important;"
                             onclick="window.location.href='${viewButton}'">View marks
                     </button>
-                    <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;"
-                            onclick="window.location.href='${viewReport}'">Reports
-                    </button>
+<%--                    <button type="button" class="btn btn-primary" style="font-size: 16px; color: white !important;"--%>
+<%--                            onclick="window.location.href='${viewReport}'">Reports--%>
+<%--                    </button>--%>
                 </th>
             </tr>
         </c:forEach>

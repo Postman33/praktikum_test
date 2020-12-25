@@ -52,5 +52,5 @@ function Show_all(table,elements){
 }
 
 function insertMark(str, pos,len){
-    return str.slice(0,pos)+'<mark>'+str.slice(pos,pos+len)+'</mark>'+str.slice(pos+len);
+    return str.slice(0,pos)+'<mark style="background-color:transparent; color:rgb(73,203,214);">'+str.slice(pos,pos+len)+'</mark>'+str.slice(pos+len);
 }

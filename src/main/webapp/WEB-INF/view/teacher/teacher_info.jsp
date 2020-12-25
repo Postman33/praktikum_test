@@ -63,6 +63,8 @@
         </div>
     </div>
 </div>
+<div style="margin-top:650px;">
+</div>
 <%@include file="/resources/view_library/footer.jsp"%>
 
 </body>
