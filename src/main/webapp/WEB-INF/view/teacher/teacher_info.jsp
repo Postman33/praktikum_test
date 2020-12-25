@@ -1,30 +1,31 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alexander
-  Date: 08.12.2020
-  Time: 16:02
+  Date: 06.12.2020
+  Time: 0:45
   To change this template use File | Settings | File Templates.
 --%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
-<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
-<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>
-
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Клиенты</title>
+</head>
+<body>
+<%@include file="/resources/view_library/header.jsp"%>
 <br>
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 center">
 
 
             <form:form modelAttribute="teacher_info" action="/saveTeacher">
 
                 <form:hidden path="id"/>
                 <div class="form-group">
-                    <label for="inputName" class="control-label">Имя клиента</label>
+                    <label for="inputName" class="control-label">Имя учителя</label>
                     <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Введите имя" />
                 </div>
                 <%--         <div class="form-group has-feedback">--%>
@@ -54,3 +55,13 @@
         </div>
     </div>
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
+
+</body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>

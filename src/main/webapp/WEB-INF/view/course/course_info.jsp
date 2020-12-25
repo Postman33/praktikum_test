@@ -7,21 +7,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Title</title>
 </head>
 <body>
-<br>
+<%@include file="/resources/view_library/header.jsp"%>
 <br>
 <div class="container">
+    <form:form modelAttribute="course_info" action="/saveCourse" method="post">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-3 center">
+            <h1 style="text-align: center;">Курс</h1>
 
 
-            <form:form modelAttribute="course_info" action="/saveCourse" method="post">
                 <input type="hidden" name="exists" value="${exists}">
                 <form:hidden path="id"/>
 
@@ -54,15 +56,24 @@
                     <form:input path="price" type="number" class="form-control" id="dateBirthday" placeholder="0"  />
                     <div class="help-block with-errors"></div>
                 </div>
+        </div>
 
-                <div class="container" style="margin-left: -50%;">
-                    <div class="container" style="margin-top: 50px; max-height: 500px; overflow: scroll;">
+    </div>
+    <div class="row">
+
+                        <div class="col-md-8 col-md-offset-3 center" style="margin-top: 350px;">
+                            <div class="container" >
+                                <h1 style="text-align: center;">Клиенты</h1>
+                                <label for="value">Введите ФИО клиента:</label>
+                                <input  id='value' type="text" value=""/>
+                            </div>
+                            <div class="container" style="margin-top: 20px; max-height: 500px; overflow: scroll;">
                         <table id="super-table"  class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>ФИО</th>
-                                <th>Дата рождения</th>
-                                <th>Операции</th>
+                                <th>FIO</th>
+                                <th>Birthday</th>
+                                <th>Operations</th>
                             </tr>
 
                             </thead>
@@ -75,15 +86,13 @@
                                 <c:url var="deleteButton" value="/deleteClient">
                                     <c:param name="client_id" value="${person.id}"/>
                                 </c:url>
-                                <tr>
+                                <tr class="elements">
                                     <td><%--<input id='hidden_id'  type='hidden' value="${person.id}" name="id2"> --%>${person.name}</td>
                                     <td>${person.birthday}
                                     <input type="hidden" name="id2" value="${person.id}"> </td>
                                     <th>
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="const f=confirm('Вы действительно хотите удалить клиента?')
-                                                if(f)
-                                        DeleteRow( this )">Удалить</button>
+                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="DeleteRow( this )">Delete</button>
                                     </th>
                                 </tr>
                             </c:forEach>
@@ -93,31 +102,43 @@
                     <div>
 
                     </div>
+
+                            <div class="form-group">
+                                <div class="center"></div>
+                                <select id="elementId">
+                                    <c:forEach var="client" items="${all_clients}">
+                                        <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
+                                    </c:forEach>
+                                </select>
+                                <input  id="testbut" type="button" value="Добавить">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-info center" type="submit" value="OK">
+                            </div>
+
+                            </div>
+
+
 <%--                    <button class="btn btn-info btn-block text-light button-bottom-crud"   type="submit" onclick="addRow('super-table')">Add</button>--%>
                 </div>
 
 
 
 
-                <div class="form-group">
-                    <select id="elementId">
-                        <c:forEach var="client" items="${all_clients}">
-                            <option name="${client.id}" value="${client.id}">${client.name}/${client.birthday}</option>
-                        </c:forEach>
-                    </select>
-                    <input  id="testbut" type="button" value="Test">
-                </div>
-
-                <div class="form-group">
-                    <input class="btn btn-info" type="submit" value="OK">
-                </div>
 
 
 
-            </form:form>
 
-        </div>
-    </div>
+
+
+
+
+</div>
+<div style="margin-top:950px;">
+</div>
+<%@include file="/resources/view_library/footer.jsp"%>
+</form:form>
 </div>
 <script>
 
@@ -154,7 +175,7 @@
                 del_but.parentElement.closest('tr').remove()
             }
             del_but.type = "button";
-            del_but.textContent='Удалить'
+            del_but.textContent='Delete'
             cell3.appendChild(del_but)
         }
         function DeleteRow( el ){
@@ -165,11 +186,11 @@
         const clients = document.querySelector('select')
 
 
-        const testbut = document.getElementById('testbut')
-        const table = document.getElementById('super-table')
+        const testbut2s = document.getElementById('testbut')
+        const table2d = document.getElementById('super-table')
 
 
-        testbut.onclick = function (){
+        testbut2s.onclick = function (){
             addTotable(document.getElementById('super-table'), document.querySelector('select'))
 
     }
@@ -179,10 +200,12 @@
 
 </body>
 <script type="text/javascript">
-<%--    <%@include file="/resources/scripts/script_for_course_info.js"%>--%>
+    <%@include file="/resources/scripts/script.js"%>
 </script>
-
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2016/validator/validator.min.js"></script>

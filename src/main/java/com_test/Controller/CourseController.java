@@ -43,10 +43,12 @@ public class CourseController {
             course2.setPrice(course.getPrice());
             course2.getClients().clear();
             if (id != null) {
+                System.out.println("Id != null");
                 for (Integer i : id) {
                     Client client = service.getClientById(i);
                     if (!course2.getClients().contains(client))
                         course2.addClient(client);
+                    System.out.printf("Добавили клиента " + client);
                 }
             }
             service.SaveCourse(course2);

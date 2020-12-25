@@ -6,12 +6,14 @@
   Time: 0:45
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Клиенты</title>
 </head>
 <body>
+<%@include file="/resources/view_library/header.jsp"%>
+
 <div class="container" >
     <h1 style="text-align: center;">Клиенты</h1>
     <label for="value">Введите ФИО клиента:</label>
@@ -57,15 +59,15 @@
     <button class="button-green"  type="submit" onclick="window.location.href='/addClient'">Добавить</button>
 
 </div>
+<%@include file="/resources/view_library/footer.jsp"%>
+
 
 </body>
 <script type="text/javascript">
     <%@include file="/resources/scripts/script.js"%>
 </script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </html>
