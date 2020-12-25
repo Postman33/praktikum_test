@@ -22,8 +22,8 @@
     function drawBasic2() {
 
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'date');
-        data.addColumn('number', 'average point');
+        data.addColumn('string', 'Дата');
+        data.addColumn('number', 'Ср. оценка');
 
         data.addRows([
             <c:forEach var="e" items="${course_marks_for_dates}">
@@ -85,7 +85,7 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Critter', 'Value'],
-            ['Avg point', ${global_mark}],
+            ['Ср. оценка', ${global_mark}],
         ]);
 
         var options = {
