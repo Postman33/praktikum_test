@@ -71,9 +71,9 @@
                         <table id="super-table"  class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>FIO</th>
-                                <th>Birthday</th>
-                                <th>Operations</th>
+                                <th>ФИО</th>
+                                <th>Дата Рождения</th>
+                                <th>Oперации</th>
                             </tr>
 
                             </thead>
@@ -92,7 +92,10 @@
                                     <input type="hidden" name="id2" value="${person.id}"> </td>
                                     <th>
                                             <%--<input type="button" value="Edit" onclick="window.location.href='${updateButton}'">--%>
-                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="DeleteRow( this )">Delete</button>
+                                        <button type="button" class="btn btn-danger" style="font-size: 16px;" onclick="const f=confirm('Вы действительно хотите удалить' +
+                                         'клиента из списка?')
+                                         if(f)
+                                        DeleteRow( this )">Удалить</button>
                                     </th>
                                 </tr>
                             </c:forEach>
@@ -175,7 +178,7 @@
                 del_but.parentElement.closest('tr').remove()
             }
             del_but.type = "button";
-            del_but.textContent='Delete'
+            del_but.textContent='Удалить'
             cell3.appendChild(del_but)
         }
         function DeleteRow( el ){
@@ -203,7 +206,7 @@
     <%@include file="/resources/scripts/script.js"%>
 </script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="<c:url value="/resources/styles/MainStyles.css"/>" type="text/css">
+<link rel="stylesheet" href="<c:url value="/resources/styles/Style_for_add.css"/>" type="text/css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>

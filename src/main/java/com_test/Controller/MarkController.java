@@ -88,8 +88,8 @@ public class MarkController {
         global_mark/=k;
 
 
-        HashMap<Date,Double> averageMarks = new HashMap<>();
-        HashMap<Date,Integer> averageCountMarks = new HashMap<>();
+        Map<Date,Double> averageMarks = new TreeMap<>();
+        Map<Date,Integer> averageCountMarks = new TreeMap<>();
         for( Mark m : marks) {
             if( m.getCourseid() != courseid) continue;
 
@@ -102,18 +102,15 @@ public class MarkController {
             }
 
         }
-
         Map<Date,Double> averageMarksForDate = new TreeMap<>();
         int count = 0;
         Double sum_point_course = 0d;
         for( Map.Entry<Date,Double> entry : averageMarks.entrySet()){
             count++;
             sum_point_course = sum_point_course + entry.getValue()/averageCountMarks.get(entry.getKey());
-
             averageMarksForDate.put(entry.getKey(),sum_point_course / count);
 
         }
-
 
 
 

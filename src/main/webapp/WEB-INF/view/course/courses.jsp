@@ -9,7 +9,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Title</title>
+    <title>Курсы</title>
 </head>
 <body>
 <%@include file="/resources/view_library/header.jsp"%>
@@ -23,7 +23,7 @@
     <table  class="table table-striped table-bordered">
         <thead>
         <tr class="header">
-            <th>Названия курса</th>
+            <th>Название курса</th>
             <th>Цена</th>
             <th>Операции</th>
         </tr>
